@@ -1,1 +1,0 @@
-phonegap.0.9.6.min.js
