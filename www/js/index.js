@@ -28,42 +28,20 @@ var app = {
 /*
     this runs when the device is ready for user interaction:
 */
-
-    function imprimirEjemplo() {
-        bluetoothSerial.list(function(device) {
-        bluetoothSerial.connect(device[0].address, conexionExito, conexionFallo);
-    }, function() {  });
-
-    }
-
-    function conexionExito() {
-    var data = "texto \r\n";
-    bluetoothSerial.write(data, impresionExito, impresionFallo);
-    }
-
-
-
     onDeviceReady: function() {
         // check to see if Bluetooth is turned on.
         // this function is called only
         //if isEnabled(), below, returns success:
         var listPorts = function() {
             // list the available BT ports:
-            /*bluetoothSerial.list( function(results) {app.display(JSON.stringify(results));},
-                function(error) { app.display(JSON.stringify(error));} );*/
-        bluetoothSerial.list(function(device) {
-            bluetoothSerial.connect(device[0].address, this.conexionExito, this.conexionFallo);
-        }, function() {  });
-
-        conexionExito:function () {
-            var data = "texto \r\n";
-            bluetoothSerial.write(data, impresionExito, impresionFallo);
-        }
-
-        conexionFallo: function(){
-            alert('fallo la connecion');
-        }
-
+            bluetoothSerial.list(
+                function(results) {
+                    app.display(JSON.stringify(results));
+                },
+                function(error) {
+                    app.display(JSON.stringify(error));
+                }
+            );
         }
 
         // if isEnabled returns failure, this function is called:
