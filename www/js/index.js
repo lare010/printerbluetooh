@@ -5,36 +5,18 @@
     by Tom Igoe
 */
 
+
 var app = {
-    macAddress: "00:03:19:10:28:B2",  // get your mac address from bluetoothSerial.list
+    macAddress: "AA:BB:CC:DD:EE:FF",  // get your mac address from bluetoothSerial.list
     chars: "",
 
 /*
     Application constructor
  */
     initialize: function() {
-        this.bindEvents1();
+        this.bindEvents();
         console.log("Starting SimpleSerial app");
     },
-
-    bindEvents1: function() {
-        alert(22);
-        bluetoothSerial.list(function(device) {
-        bluetoothSerial.connect(device[0].address, this.conexionExito, conexionFallo);
-        }, function() {
-
-        });
-    }
-
-    conexionExito: function () {
-    var data = "texto \r\n";
-    bluetoothSerial.write(data, impresionExito, impresionFallo);
-    }
-
-    conexionFallo: function(){
-        alert('fallo');
-    }
-
 /*
     bind any events that are required on startup to listeners:
 */
@@ -47,13 +29,11 @@ var app = {
     this runs when the device is ready for user interaction:
 */
     onDeviceReady: function() {
-        alert(22)
         // check to see if Bluetooth is turned on.
         // this function is called only
         //if isEnabled(), below, returns success:
         var listPorts = function() {
             // list the available BT ports:
-
             bluetoothSerial.list(
                 function(results) {
                     app.display(JSON.stringify(results));
@@ -171,4 +151,3 @@ var app = {
     }
 };      // end of app
 
-alert('fin')
