@@ -104,7 +104,7 @@ var app = {
         // the last newline:
               bluetoothSerial.write("hello, world", success, failure);
 
-              /*/ array of int (or bytes)
+              // array of int (or bytes)
               bluetoothSerial.write([186, 220, 222], success, failure);
 
               // Typed Array
@@ -116,7 +116,7 @@ var app = {
               bluetoothSerial.write(data, success, failure);
 
               // Array Buffer
-              bluetoothSerial.write(data.buffer, success, failure);*/
+              bluetoothSerial.write(data.buffer, success, failure);
 
         bluetoothSerial.subscribe('\n', function (data) {
             app.clear();
