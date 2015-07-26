@@ -3,7 +3,9 @@
 $('#connectB').on('click',function(){
 
     bluetoothSerial.list(function(device) {
-        alert(JSON.stringify(device))
+        alert(JSON.stringify(device[0]));
+        alert(JSON.stringify(device[1]));
+        //alert()
     bluetoothSerial.connect(device[0].address, conexionExito, conexionFallo);
     }, function() {
 
