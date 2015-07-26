@@ -127,12 +127,12 @@ var app = {
         var success = function () {
             alert('funciono')
 
-        };
+        },
 
         var failure = function () {
             alert('no na')
 
-        };
+        },
 /*
     unsubscribes from any Bluetooth serial listener and changes the button:
 */
