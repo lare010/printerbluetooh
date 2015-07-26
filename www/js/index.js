@@ -4,6 +4,25 @@
     Modified 9 May 2013
     by Tom Igoe
 */
+	$("#connectbtn").on('click',function(){ imprimirEjemplo()});
+		//alert('00:03:19:10:28:B2');
+	
+	function imprimirEjemplo() {
+alert(22)
+		
+		bluetoothSerial.list(function(device) {
+			alert(device);
+		bluetoothSerial
+		.connect(device[0].address, conexionExito, conexionFallo);
+		}, function() {
+
+		});
+	}
+
+	function conexionExito() {
+	var data = "texto \r\n";
+	bluetoothSerial.write(data, impresionExito, impresionFallo);
+	}
 
 
 var app = {
@@ -16,7 +35,6 @@ var app = {
     initialize: function() {
         this.bindEvents();
         console.log("Starting SimpleSerial app");
-        alert("Starting SimpleSerial app"); 
     },
 /*
     bind any events that are required on startup to listeners:
@@ -24,14 +42,12 @@ var app = {
     bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
         connectButton.addEventListener('touchend', app.manageConnection, false);
-
     },
 
 /*
     this runs when the device is ready for user interaction:
 */
     onDeviceReady: function() {
-
         // check to see if Bluetooth is turned on.
         // this function is called only
         //if isEnabled(), below, returns success:
@@ -40,12 +56,10 @@ var app = {
             bluetoothSerial.list(
                 function(results) {
                     app.display(JSON.stringify(results));
-                    alert(JSON.stringify(results))
+                    alert(app)
                 },
                 function(error) {
                     app.display(JSON.stringify(error));
-                    alert(JSON.stringify(error))
-
                 }
             );
         }
@@ -53,7 +67,6 @@ var app = {
         // if isEnabled returns failure, this function is called:
         var notEnabled = function() {
             app.display("Bluetooth is not enabled.")
-            alert("Bluetooth is not enabled.");
         }
 
          // check if Bluetooth is on:
@@ -75,8 +88,6 @@ var app = {
             app.clear();
             app.display("Attempting to connect. " +
                 "Make sure the serial port is open on the target device.");
-            alert("Attempting to connect. " +
-                "Make sure the serial port is open on the target device.");
             // attempt to connect:
             bluetoothSerial.connect(
                 app.macAddress,  // device to connect to
@@ -89,7 +100,6 @@ var app = {
         // returns success  In other words, if  connected, then disconnect:
         var disconnect = function () {
             app.display("attempting to disconnect");
-            alert("attempting to disconnect");
             // if connected, do this:
             bluetoothSerial.disconnect(
                 app.closePort,     // stop listening to the port
