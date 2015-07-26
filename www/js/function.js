@@ -4,14 +4,14 @@ $('#connectB').on('click',function(){
 
     bluetoothSerial.list(function(device) {
         
-        serial= JSON.stringify(device);
+        /*serial= JSON.stringify(device);
         var arr = [];
         for (var prop in serial) {
             arr.push(serial[prop]);
         }
  
-        alert(arr);
-        alert(device[0].address);
+        alert(arr);*/
+        alert(device[0].name);
         alert(device[0].address);
 
     })
