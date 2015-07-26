@@ -16,6 +16,7 @@ $('#connectB').on('click',function(){
     var data = "texto \n";
     alert('correcto');
     //bluetoothSerial.write(data, impresionExito, impresionFallo);
+    bluetoothSerial.println("Hello, world?");
 }
 
  function conexionFallo() {
