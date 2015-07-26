@@ -3,6 +3,7 @@
 $('#connectB').on('click',function(){
 
     bluetoothSerial.list(function(device) {
+        alert(device)
     bluetoothSerial.connect(device[0].address, conexionExito, conexionFallo);
     }, function() {
 
@@ -11,6 +12,7 @@ $('#connectB').on('click',function(){
 
  function conexionExito() {
     var data = "texto \r\n";
+    alert('correcto');
     bluetoothSerial.write(data, impresionExito, impresionFallo);
 }
 
