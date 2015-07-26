@@ -16,7 +16,7 @@ var app = {
     initialize: function() {
         this.bindEvents();
         console.log("Starting SimpleSerial app");
-        alert("Starting SimpleSerial app");
+        alert("Starting SimpleSerial app"); 
     },
 /*
     bind any events that are required on startup to listeners:
@@ -24,12 +24,14 @@ var app = {
     bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
         connectButton.addEventListener('touchend', app.manageConnection, false);
+
     },
 
 /*
     this runs when the device is ready for user interaction:
 */
     onDeviceReady: function() {
+
         // check to see if Bluetooth is turned on.
         // this function is called only
         //if isEnabled(), below, returns success:
@@ -38,9 +40,12 @@ var app = {
             bluetoothSerial.list(
                 function(results) {
                     app.display(JSON.stringify(results));
+                    alert(JSON.stringify(results))
                 },
                 function(error) {
                     app.display(JSON.stringify(error));
+                    alert(JSON.stringify(error))
+
                 }
             );
         }
