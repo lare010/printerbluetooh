@@ -3,34 +3,22 @@
 $('#connectB').on('click',function(){
 
     bluetoothSerial.list(function(device) {
-        
-        /*serial= JSON.stringify(device);
-        var arr = [];
-        for (var prop in serial) {
-            arr.push(serial[prop]);
-        }
- 
-        alert(arr);*/
-        alert(device[0].name);
-        alert(device[0].address);
+        nname= device[0].name;
+        ndir= device[0].address
 
-    })
-
-    /*    //alert()
-    bluetoothSerial.connect(device[0].address, conexionExito, conexionFallo);
+    bluetoothSerial.connect(ndir, conexionExito, conexionFallo);
     }, function() {
 
     });
 })   
 
  function conexionExito() {
-    var data = "texto \r\n";
+    var data = "texto \n";
     alert('correcto');
-    bluetoothSerial.write(data, impresionExito, impresionFallo);
+    //bluetoothSerial.write(data, impresionExito, impresionFallo);
 }
 
  function conexionFallo() {
     //var data = "texto \r\n";
     alert('fallo')
-}*/
-})
+}
