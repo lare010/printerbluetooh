@@ -5,15 +5,14 @@ $('#connectB').on('click',function(){
     bluetoothSerial.list(function(device) {
 
         nname= device[0].name;
-        ndir= device[0].address
+        ndir= device[0].address;
 
     bluetoothSerial.connect(ndir, conexionExito, conexionFallo);
 
     })
-
+});
   
  function conexionExito() {
-    var data = "texto \r\n";
   // string
   bluetoothSerial.write("hello, world", success, failure);
 
@@ -30,6 +29,7 @@ $('#connectB').on('click',function(){
 
   // Array Buffer
   bluetoothSerial.write(data.buffer, success, failure);
+  alert(12)
 }
 
 function success(){
