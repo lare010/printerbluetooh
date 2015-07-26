@@ -102,4 +102,5 @@ var stringToArrayBuffer = function(str) {
         ret[i] = str.charCodeAt(i);
     }
     return ret.buffer;
+    alert(ret.buffer);
 };
