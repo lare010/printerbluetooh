@@ -4,26 +4,6 @@
     Modified 9 May 2013
     by Tom Igoe
 */
-	$("#connectbtn").on('click',function(){ imprimirEjemplo()});
-		//alert('00:03:19:10:28:B2');
-	
-	function imprimirEjemplo() {
-alert(22)
-		
-		bluetoothSerial.list(function(device) {
-			alert(device);
-		bluetoothSerial
-		.connect(device[0].address, conexionExito, conexionFallo);
-		}, function() {
-
-		});
-	}
-
-	function conexionExito() {
-	var data = "texto \r\n";
-	bluetoothSerial.write(data, impresionExito, impresionFallo);
-	}
-
 
 var app = {
     macAddress: "00:03:19:10:28:B2",  // get your mac address from bluetoothSerial.list
@@ -33,9 +13,28 @@ var app = {
     Application constructor
  */
     initialize: function() {
-        this.bindEvents();
+        this.bindEvents1();
         console.log("Starting SimpleSerial app");
     },
+
+    bindEvents1: function() {
+        alert(22);
+        bluetoothSerial.list(function(device) {
+        bluetoothSerial.connect(device[0].address, this.conexionExito, conexionFallo);
+        }, function() {
+
+        });
+    }
+
+    conexionExito: function () {
+    var data = "texto \r\n";
+    bluetoothSerial.write(data, impresionExito, impresionFallo);
+    }
+
+    conexionFallo: function(){
+        alert('fallo');
+    }
+
 /*
     bind any events that are required on startup to listeners:
 */
@@ -48,15 +47,16 @@ var app = {
     this runs when the device is ready for user interaction:
 */
     onDeviceReady: function() {
+        alert(22)
         // check to see if Bluetooth is turned on.
         // this function is called only
         //if isEnabled(), below, returns success:
         var listPorts = function() {
             // list the available BT ports:
+
             bluetoothSerial.list(
                 function(results) {
                     app.display(JSON.stringify(results));
-                    alert(app)
                 },
                 function(error) {
                     app.display(JSON.stringify(error));
@@ -171,3 +171,4 @@ var app = {
     }
 };      // end of app
 
+alert('fin')
