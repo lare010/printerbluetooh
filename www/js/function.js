@@ -3,8 +3,9 @@
 $('#connectB').on('click',function(){
 
     bluetoothSerial.list(function(device) {
-        serial= JSON.stringify(device);
-
+        
+        serial= toJSON(device);
+        alert(device)
         alert(serial);
         alert(serial[0]);
         alert(serial[0][0]);
