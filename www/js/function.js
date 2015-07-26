@@ -14,9 +14,18 @@ $('#connectB').on('click',function(){
 
  function conexionExito() {
     var data = "texto \r\n";
-    alert('correcto');
+    
     //bluetoothSerial.write(data, impresionExito, impresionFallo);
-    bluetoothSerial.write(data, success, failure); 
+    `//bluetoothSerial.write(data, success, failure); 
+// put your setup code here, to run once:
+      Serial.begin(9600);   // opens serial port, sets data rate to 9600 bps
+      Serial.flush();
+      bluetooth.begin(9600);
+      //enter command mode
+      bluetooth.println("$$$");
+      Serial.println("setup complete.");
+      alert('correcto');
+
 }
 
 function success{
