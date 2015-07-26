@@ -16,6 +16,7 @@ var app = {
     initialize: function() {
         this.bindEvents();
         console.log("Starting SimpleSerial app");
+        alert("Starting SimpleSerial app");
     },
 /*
     bind any events that are required on startup to listeners:
@@ -47,6 +48,7 @@ var app = {
         // if isEnabled returns failure, this function is called:
         var notEnabled = function() {
             app.display("Bluetooth is not enabled.")
+            alert("Bluetooth is not enabled.");
         }
 
          // check if Bluetooth is on:
@@ -68,6 +70,8 @@ var app = {
             app.clear();
             app.display("Attempting to connect. " +
                 "Make sure the serial port is open on the target device.");
+            alert("Attempting to connect. " +
+                "Make sure the serial port is open on the target device.");
             // attempt to connect:
             bluetoothSerial.connect(
                 app.macAddress,  // device to connect to
@@ -80,6 +84,7 @@ var app = {
         // returns success  In other words, if  connected, then disconnect:
         var disconnect = function () {
             app.display("attempting to disconnect");
+            alert("attempting to disconnect");
             // if connected, do this:
             bluetoothSerial.disconnect(
                 app.closePort,     // stop listening to the port
