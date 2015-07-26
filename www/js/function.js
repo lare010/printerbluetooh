@@ -3,49 +3,40 @@
 $('#connectB').on('click',function(){
 
     bluetoothSerial.list(function(device) {
-<<<<<<< HEAD
+
         nname= device[0].name;
         ndir= device[0].address
 
     bluetoothSerial.connect(ndir, conexionExito, conexionFallo);
-=======
-        
-        serial= JSON.stringify(device);
-        alert(serial);
-        alert(serial[0].name);
-        alert(serial[0].address);
 
     })
 
-    /*    //alert()
-    bluetoothSerial.connect(device[0].address, conexionExito, conexionFallo);
->>>>>>> parent of 243818e... 1
-    }, function() {
-
-    });
-})   
-
+  
  function conexionExito() {
     var data = "texto \r\n";
-    
-    //bluetoothSerial.write(data, impresionExito, impresionFallo);
-    `//bluetoothSerial.write(data, success, failure); 
-// put your setup code here, to run once:
-      Serial.begin(9600);   // opens serial port, sets data rate to 9600 bps
-      Serial.flush();
-      bluetooth.begin(9600);
-      //enter command mode
-      bluetooth.println("$$$");
-      Serial.println("setup complete.");
-      alert('correcto');
+  // string
+  bluetoothSerial.write("hello, world", success, failure);
 
+  // array of int (or bytes)
+  bluetoothSerial.write([186, 220, 222], success, failure);
+
+  // Typed Array
+  var data = new Uint8Array(4);
+  data[0] = 0x41;
+  data[1] = 0x42;
+  data[2] = 0x43;
+  data[3] = 0x44;
+  bluetoothSerial.write(data, success, failure);
+
+  // Array Buffer
+  bluetoothSerial.write(data.buffer, success, failure);
 }
 
-function success{
+function success(){
     alert('imprimio impresionExito')
 }
 
-function failure{
+function failure(){
     alert('fallo la impresionFallo')
 }
 
