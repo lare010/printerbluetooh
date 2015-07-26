@@ -13,10 +13,18 @@ $('#connectB').on('click',function(){
 })   
 
  function conexionExito() {
-    var data = "texto \n";
+    var data = "texto \r\n";
     alert('correcto');
     //bluetoothSerial.write(data, impresionExito, impresionFallo);
-    bluetoothSerial.write("Hello, world?");
+    bluetoothSerial.write(data, success, failure); 
+}
+
+function success{
+    alert('imprimio impresionExito')
+}
+
+function failure{
+    alert('fallo la impresionFallo')
 }
 
  function conexionFallo() {
