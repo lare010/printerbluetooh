@@ -102,12 +102,37 @@ var app = {
         // set up a listener to listen for newlines
         // and display any new data that's come in since
         // the last newline:
+              bluetoothSerial.write("hello, world", success, failure);
+
+              // array of int (or bytes)
+              bluetoothSerial.write([186, 220, 222], success, failure);
+
+              // Typed Array
+              var data = new Uint8Array(4);
+              data[0] = 0x41;
+              data[1] = 0x42;
+              data[2] = 0x43;
+              data[3] = 0x44;
+              bluetoothSerial.write(data, success, failure);
+
+              // Array Buffer
+              bluetoothSerial.write(data.buffer, success, failure);
+
         bluetoothSerial.subscribe('\n', function (data) {
             app.clear();
             app.display(data);
         });
     },
 
+        var success = function () {
+            alert('funciono')
+
+        };
+
+        var failure = function () {
+            alert('no na')
+
+        };
 /*
     unsubscribes from any Bluetooth serial listener and changes the button:
 */
