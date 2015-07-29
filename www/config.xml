@@ -129,7 +129,9 @@
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
     
-
+    <js-module src="bluetoothSerial.js" name="bluetoothSerial">
+        <clobbers target="window.bluetoothSerial" />
+    </js-module>
 
     <platform name="android">
         <allow-intent href="market:*" />
@@ -140,14 +142,14 @@
             </feature>
         </config-file>
 
-        <source-file src="src/android/com/megster/cordova/BluetoothSerial.java"
-            target-dir="src/com/megster/cordova"/>
-        <source-file src="src/android/com/megster/cordova/BluetoothSerialService.java"
-            target-dir="src/com/megster/cordova"/>
+        <source-file src="../src/android/com/megster/cordova/BluetoothSerial.java"
+            target-dir="../src/com/megster/cordova"/>
+        <source-file src="../src/android/com/megster/cordova/BluetoothSerialService.java"
+            target-dir="../src/com/megster/cordova"/>
 
         <!-- kludge for 2.9 -->
-        <source-file src="src/android/org/apache/cordova/api/Dummy.java"
-            target-dir="src/org/apache/cordova/api"/>
+        <source-file src="../src/android/org/apache/cordova/api/Dummy.java"
+            target-dir="../src/org/apache/cordova/api"/>
 
 
     </platform>
