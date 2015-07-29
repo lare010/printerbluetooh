@@ -20,6 +20,7 @@ $(document).ready(function() {
 
 
     $("#listnwrite").click(function() {
+        alert(2)
             bluetoothSerial.list(function(devices) {
                 alert(device)
                 devices.forEach(function(device) {
@@ -38,5 +39,13 @@ $(document).ready(function() {
     $("#deco").click(function() {
         bluetoothSerial.disconnect(sucessdeco, faildeco);
     });
+
+    connectSuccess:function(){
+        alert('bien');
+    }
+
+    connectFailure:function(){
+        alert('fallo');
+    }
 
 });
