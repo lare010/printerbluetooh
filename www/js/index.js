@@ -97,12 +97,14 @@ var app = {
     openPort: function() {
         // if you get a good Bluetooth serial connection:
         app.display("Connected to: " + app.macAddress);
+
+        bluetoothSerial.write("hello world", success, failure);
+
         // change the button's name:
         connectButton.innerHTML = "Disconnect";
         // set up a listener to listen for newlines
         // and display any new data that's come in since
         // the last newline:
-              bluetoothSerial.write("hello world", success, failure);
 
               /*/ array of int (or bytes)
               bluetoothSerial.write([186, 220, 222], success, failure);
