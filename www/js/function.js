@@ -1,3 +1,17 @@
+
+/*global cordova
+$('#connectB').on('click',function(){
+
+    bluetoothSerial.list(function(device) {
+
+        nname= device[0].name;
+        ndir= device[0].address;
+
+    bluetoothSerial.connect(ndir, conexionExito, conexionFallo);
+
+    })
+});*/
+  
 $(document).ready(function() {
 
     $("#testco").click(function() {
@@ -7,6 +21,7 @@ $(document).ready(function() {
 
     $("#listnwrite").click(function() {
             bluetoothSerial.list(function(devices) {
+                alert(device)
                 devices.forEach(function(device) {
                     var data = "something \r\n";
                     alert(device.address);
