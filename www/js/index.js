@@ -98,7 +98,7 @@ var app = {
         // if you get a good Bluetooth serial connection:
         app.display("Connected to: " + app.macAddress);
 
-        bluetoothSerial.write("hello world", success, failure);
+        //bluetoothSerial.write("hello world", success, failure);
 
         // change the button's name:
         connectButton.innerHTML = "Disconnect";
