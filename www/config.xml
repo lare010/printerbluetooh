@@ -151,7 +151,6 @@
         <source-file src="../src/android/org/apache/cordova/api/Dummy.java"
             target-dir="../src/org/apache/cordova/api"/>
 
-
     </platform>
     <platform name="ios">
         <allow-intent href="itms:*" />
