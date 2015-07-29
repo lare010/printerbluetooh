@@ -129,9 +129,6 @@
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
     
-    <js-module src="www/bluetoothSerial.js" name="bluetoothSerial">
-        <clobbers target="window.bluetoothSerial" />
-    </js-module>
 
 
     <platform name="android">
