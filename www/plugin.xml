@@ -5,7 +5,7 @@
     id="com.megster.cordova.bluetoothserial"
     version="0.4.3">
 
-    <name>Bluetooth Serial</name>
+    <name>Bluetooth Serial1</name>
     <description>Bluetooth Serial Communication Plugin</description>
     <license>Apache 2.0</license>
     <keywords>bluetooth, BLE, arduino</keywords>
