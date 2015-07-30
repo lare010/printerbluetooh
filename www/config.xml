@@ -7,10 +7,6 @@
     <author>
         Tom Igoe
     </author>
-    <content src="index.html" />
-    <access origin="*" />
-    <preference name="fullscreen" value="false" />
-    <preference name="webviewbounce" value="true" />
 
     <preference name="permissions"                value="none"/>
 
@@ -90,6 +86,8 @@
 
  
     <access origin="*"/>
+    <content src="index.html" />
+
     <!-- Added the following intents to support the removal of whitelist code from base cordova to a plugin -->
     <!-- Whitelist configuration. Refer to https://cordova.apache.org/docs/en/edge/guide_appdev_whitelist_index.md.html -->
     <plugin name="cordova-plugin-whitelist" version="1" />
