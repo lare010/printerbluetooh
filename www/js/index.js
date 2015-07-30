@@ -47,7 +47,7 @@ var app = {
         // if isEnabled returns failure, this function is called:
         var notEnabled = function() {
             app.display("Bluetooth is not enabled.")
-        }
+        } 
 
          // check if Bluetooth is on:
         bluetoothSerial.isEnabled(
