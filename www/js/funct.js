@@ -6,8 +6,9 @@ $('#connectButton1').on('click',function(){
 
 	function imprimirEjemplo() {
 		bluetoothSerial.list(function(device) {
-alert(device[0].address);
-		bluetoothSerial.connect(device[0].address, conexionExito, function() {alert('no connected')});
+			macAddress = device[0].address;
+alert(macAddress);
+		bluetoothSerial.connect(macAddress, conexionExito, function() {alert('no connected')});
 		}, function() {
 
 	});}
