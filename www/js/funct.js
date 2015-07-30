@@ -1,9 +1,25 @@
 
 $('#connectButton1').on('click',function(){
+	imprimirEjemplo(); 
+})
+	
 
-		bluetoothSerial.isConnected(
+	function imprimirEjemplo() {
+		bluetoothSerial.list(function(device) {
+alert(device[0].address);
+		bluetoothSerial.connect(device[0].address, conexionExito, function() {alert('no connected')});
+		}, function() {
+
+	});}
+
+	function conexionExito() {
+		var data = "texto \r\n";
+		bluetoothSerial.write(data, function() {alert('impreso')}, function() {alert('fallotecnico')}); 
+	}
+
+/*		bluetoothSerial.isConnected(
 		    function() {
-		        //console.log("Bluetooth is connected");
+		        console.log("Bluetooth is connected");
 		        alert('connected')
 		        
 				var data = "texto \r\n";
@@ -11,8 +27,6 @@ $('#connectButton1').on('click',function(){
 		    },
 		    function() {
 		        console.log("Bluetooth is *not* connected");
-		        //alert('notconected')
+		        alert('Bluetooth is *not* connected')
 		    }
-		);
-
-})
+		);*/
