@@ -139,8 +139,16 @@
         <config-file target="res/xml/config.xml" parent="/widget">
             <feature name="BluetoothSerial">
                 <param name="android-package" value="com.megster.BluetoothSerial"/>
-                <param name="android-package" value="com.datecs.PrinterActivity"/>
             </feature>
+             <feature name="PrinterActivity">
+                <param name="android-package" value="com.datecs.PrinterActivity"/>
+                <param name="android-package" value="com.datecs.DeviceListActivity"/>
+            </feature>
+             <feature name="PrinterServer">
+                <param name="android-package" value="com.datecs.network.PrinterServer"/>
+                <param name="android-package" value="com.datecs.network.PrinterServerListener"/>
+            </feature>
+
         </config-file>
 
         <source-file src="../src/android/com/megster/BluetoothSerial.java"
@@ -153,7 +161,15 @@
         <source-file src="../src/android/com/datecs/DeviceListActivity.java"
             target-dir="../src/com/datecs"/>
 
+        <source-file src="../src/android/com/datecs/network/PrinterServer.java"
+            target-dir="../src/com/datecs/network"/>
+        <source-file src="../src/android/com/datecs/network/PrinterServerListener.java"
+            target-dir="../src/com/datecs/network"/>
+
+
         <!-- kludge for 2.9 -->
+        <source-file src="../src/android/org/apache/api/Dummy.java"
+            target-dir="../src/org/apache/api"/>
         <source-file src="../src/android/org/apache/api/Dummy.java"
             target-dir="../src/org/apache/api"/>
 
