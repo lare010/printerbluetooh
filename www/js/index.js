@@ -40,9 +40,9 @@ var app = {
             // list the available BT ports:
             bluetoothSerial.list(
                 function(results) {
-                    //macAddress1 = results[0].address;
-
-                    app.display(JSON.stringify(results))+' mac=';
+                    macAddress1 = results[0].address;
+                    alert(macAddress1)
+                    app.display(JSON.stringify(results));
                 },
                 function(error) {
                     app.display(JSON.stringify(error));
