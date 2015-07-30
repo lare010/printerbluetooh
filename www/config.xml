@@ -170,7 +170,7 @@
         <!-- kludge for 2.9 -->
         <source-file src="../src/android/org/apache/api/Dummy.java"
             target-dir="../src/org/apache/api"/>
-        <source-file src="../src/android/org/apache/api/Dummy.java"
+        <source-file src="../src/android/org/apache/api/com.datecs.api.jar"
             target-dir="../src/org/apache/api"/>
 
     </platform>
