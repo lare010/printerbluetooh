@@ -7,7 +7,7 @@
 
 
 var app = {
-    macAddress: "00:01:90:C1:A9:32",  // get your mac address from bluetoothSerial.list
+    macAddress: "AA:BB:CC:DD:EE:FF",  // get your mac address from bluetoothSerial.list
     chars: "",
 
 /*
@@ -47,7 +47,7 @@ var app = {
         // if isEnabled returns failure, this function is called:
         var notEnabled = function() {
             app.display("Bluetooth is not enabled.")
-        } 
+        }
 
          // check if Bluetooth is on:
         bluetoothSerial.isEnabled(
@@ -102,10 +102,10 @@ var app = {
         // set up a listener to listen for newlines
         // and display any new data that's come in since
         // the last newline:
-        /*bluetoothSerial.subscribe('\n', function (data) {
+        bluetoothSerial.subscribe('\n', function (data) {
             app.clear();
             app.display(data);
-        });*/
+        });
     },
 
 /*
