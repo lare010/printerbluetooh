@@ -4,10 +4,10 @@
     Modified 9 May 2013
     by Tom Igoe
 */
-var macAddress='';
+var macAddress1="00:01:90:C1:A9:32";
 
 var app = {
-    macAddress,//: "00:01:90:C1:A9:32",  // get your mac address from bluetoothSerial.list
+    macAddress: "00:01:90:C1:A9:32",  // get your mac address from bluetoothSerial.list
     chars: "",
 
 /*
@@ -40,9 +40,9 @@ var app = {
             // list the available BT ports:
             bluetoothSerial.list(
                 function(results) {
-                    macAddress = results[0].address;
+                    macAddress1 = results[0].address;
 
-                    app.display(JSON.stringify(results)+' mac='+macAddress);
+                    app.display(JSON.stringify(results)+' mac='+macAddress1);
                 },
                 function(error) {
                     app.display(JSON.stringify(error));
