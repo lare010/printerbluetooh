@@ -4,10 +4,10 @@
     Modified 9 May 2013
     by Tom Igoe
 */
-
+var macAddress='';
 
 var app = {
-    macAddress: "00:01:90:C1:A9:32",  // get your mac address from bluetoothSerial.list
+    macAddress,//: "00:01:90:C1:A9:32",  // get your mac address from bluetoothSerial.list
     chars: "",
 
 /*
@@ -29,14 +29,20 @@ var app = {
     this runs when the device is ready for user interaction:
 */
     onDeviceReady: function() {
-        // check to see if Bluetooth is turned on.
-        // this function is called only
-        //if isEnabled(), below, returns success:
+         // check if Bluetooth is on:
+        bluetoothSerial.isEnabled(
+            listPorts,
+            notEnabled
+        );
+
+
         var listPorts = function() {
             // list the available BT ports:
             bluetoothSerial.list(
                 function(results) {
-                    app.display(JSON.stringify(results));
+                    macAddress = results[0].address;
+
+                    app.display(JSON.stringify(results)+' mac='+macAddress);
                 },
                 function(error) {
                     app.display(JSON.stringify(error));
@@ -49,11 +55,6 @@ var app = {
             app.display("Bluetooth is not enabled.")
         }
 
-         // check if Bluetooth is on:
-        bluetoothSerial.isEnabled(
-            listPorts,
-            notEnabled
-        );
     },
 /*
     Connects if not connected, and disconnects if connected:
