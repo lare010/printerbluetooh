@@ -6,14 +6,13 @@ $('#connectButton1').on('click',function(){
 
 	function imprimirEjemplo() {
 		bluetoothSerial.list(function(device) {
-			macAddress = device[0].address;
-alert(macAddress);
-		bluetoothSerial.connect(macAddress, conexionExito, function() {alert('no connected')});
-		}, function() {
+			macAddress = "00:01:90:C1:A9:32";
+		alert(macAddress);
+		bluetoothSerial.connect(macAddress, Exito, function() {alert('no connected')});
+		}, function(error) {alert(error)}
+	)}
 
-	});}
-
-	function conexionExito() {
+	function Exito() {
 		var data = "texto \r\n";
 		bluetoothSerial.write(data, function() {alert('impreso')}, function() {alert('fallotecnico')}); 
 	}

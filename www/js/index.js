@@ -102,13 +102,10 @@ var app = {
         // set up a listener to listen for newlines
         // and display any new data that's come in since
         // the last newline:
-        var data = "texto \r\n";
-        bluetoothSerial.write(data, impresionExito, impresionFallo); 
-
-        bluetoothSerial.subscribe('\n', function (data) {
+        /*bluetoothSerial.subscribe('\n', function (data) {
             app.clear();
             app.display(data);
-        });
+        });*/
     },
 
 /*
