@@ -136,7 +136,7 @@
     <platform name="android">
         <allow-intent href="market:*" />
     
-        <config-file target="res/xml/config.xml" parent="/widget">
+        <!--config-file target="res/xml/config.xml" parent="/widget">
             <feature name="BluetoothSerial">
                 <param name="android-package" value="com.megster.BluetoothSerial"/>
             </feature>
@@ -167,11 +167,11 @@
             target-dir="../src/com/datecs/network"/>
 
 
-        <!-- kludge for 2.9 -->
+        
         <source-file src="../src/android/org/apache/api/Dummy.java"
             target-dir="../src/org/apache/api"/>
         <source-file src="../src/android/org/apache/api/com.datecs.api.jar"
-            target-dir="../src/org/apache/api"/>
+            target-dir="../src/org/apache/api"/-->
 
     </platform>
     <platform name="ios">
