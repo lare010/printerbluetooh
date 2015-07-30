@@ -5,8 +5,9 @@ $('#connectButton1').on('click',function(){
 		    function() {
 		        //console.log("Bluetooth is connected");
 		        alert('connected')
-		        // string
-				bluetoothSerial.write("hello, world", function() {alert('impreso')}, function() {alert('fallotecnico')});
+		        
+				var data = "texto \r\n";
+				bluetoothSerial.write(data, function() {alert('impreso')}, function() {alert('fallotecnico')}); 
 		    },
 		    function() {
 		        console.log("Bluetooth is *not* connected");
