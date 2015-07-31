@@ -41,10 +41,10 @@
             <uses-permission android:name="android.permission.BLUETOOTH" />
             <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
         </config-file>
-   
+
     </platform>
 
-    <!--platform name="ios">
+    <platform name="ios">
 
         <config-file target="config.xml" parent="/widget">
             <feature name="BluetoothSerial">
@@ -62,7 +62,7 @@
         <header-file src="src/ios/BLEDefines.h" target-dir="BluetoothSerial" />
         <source-file src="src/ios/BLE.m" target-dir="BluetoothSerial" />
 
-        <!-- frameworks >
+        <!-- frameworks -->
         <framework src="CoreBluetooth.framework" />
 
     </platform>
@@ -82,5 +82,5 @@
          <source-file src="src/wp/BluetoothSerial.cs" />
          <source-file src="src/wp/BluetoothConnectionManager.cs" />
 
-    </platform-->
+    </platform>
 </plugin>
