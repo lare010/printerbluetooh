@@ -44,10 +44,11 @@ var app = {
                     macPrinter= results[0].address;
                     namPrinter= results[0].name;
                     //alert(macPrinter)
-                    app.display(JSON.stringify(results));
+                    //app.display(JSON.stringify(results));
                 },
                 function(error) {
-                    app.display(JSON.stringify(error));
+                    //app.display(JSON.stringify(error));
+                    alert(error)
                 }
             );
         }
