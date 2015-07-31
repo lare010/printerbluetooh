@@ -24,7 +24,7 @@ var app = {
     bindEvents: function() {
         //document.addEventListener('deviceready', this.onDeviceReady, false);
         document.addEventListener('deviceready', app.manageConnection, false);
-        connectButton.addEventListener('touchend', app.manageConnection, false);
+        connectButton.addEventListener('touchend', disconnect(), false);
     },
 
 /*
@@ -71,7 +71,14 @@ var app = {
                 namPrinter= results[0].name;
                 
                 // here's the real action of the manageConnection function:
-                bluetoothSerial.isConnected(disconnect(), connect());
+                //bluetoothSerial.isConnected(disconnect(), connect());
+                bluetoothSerial.isConnected(
+                    function() {
+                        //console.log("Bluetooth is connected");
+                        alert('Bluetooth esta conectedo');
+                    },
+                    function() { connect(); }
+                );
             },
             function(error) {
                alert(error); //app.display(JSON.stringify(error));
