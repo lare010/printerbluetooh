@@ -24,7 +24,7 @@ var app = {
     bindEvents: function() {
         //document.addEventListener('deviceready', this.onDeviceReady, false);
         document.addEventListener('deviceready', app.manageConnection, false);
-        cButton.addEventListener('touchend', disconnect(), false);
+        cButton.addEventListener('touchend', app.mConnection, false);
     },
 
 /*
@@ -181,14 +181,3 @@ var app = {
     }
 };      // end of app
 
-/*$('#cButton').on('click',function(){
-    alert(22)
-    bluetoothSerial.isConnected(
-    function() {
-       alert("Bluetooth is connected");
-    },
-    function() {
-        alert("Bluetooth is *not* connected");
-    }
-);
-})*/
