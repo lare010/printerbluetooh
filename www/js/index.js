@@ -4,10 +4,11 @@
     Modified 9 May 2013
     by Tom Igoe
 */
-var macAddress1='';
+var macPrinter='';
+var namPrinter='';
 
 var app = {
-    macAddress: "00:01:90:C1:A9:32",  // get your mac address from bluetoothSerial.list
+    macAddress: "",//"00:01:90:C1:A9:32",  // get your mac address from bluetoothSerial.list
     chars: "",
 
 /*
@@ -40,8 +41,9 @@ var app = {
             // list the available BT ports:
             bluetoothSerial.list(
                 function(results) {
-                    macAddress1 = results[0].address+' , '+results[0].name;
-                    alert(macAddress1)
+                    macPrinter= results[0].address;
+                    namPrinter= results[0].name;
+                    //alert(macPrinter)
                     app.display(JSON.stringify(results));
                 },
                 function(error) {
@@ -71,7 +73,7 @@ var app = {
                 "Make sure the serial port is open on the target device.");
             // attempt to connect:
             bluetoothSerial.connect(
-                app.macAddress,  // device to connect to
+                macPrinter,//app.macAddress,  // device to connect to
                 app.openPort,    // start listening if you succeed
                 app.showError    // show the error if you fail
             );
@@ -97,7 +99,7 @@ var app = {
 */
     openPort: function() {
         // if you get a good Bluetooth serial connection:
-        app.display("Connected to: " + app.macAddress);
+        app.display("Conectado al printer: " +namPrinter+" mac: "+ macPrinter);
         // change the button's name:
         connectButton.innerHTML = "Disconnect";
         // set up a listener to listen for newlines
@@ -114,7 +116,7 @@ var app = {
 */
     closePort: function() {
         // if you get a good Bluetooth serial connection:
-        app.display("Disconnected from: " + app.macAddress);
+        app.display("Disconnected from: " +namPrinter+" mac: "+ macPrinter);
         // change the button's name:
         connectButton.innerHTML = "Connect";
         // unsubscribe from listening:
