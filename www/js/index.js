@@ -71,7 +71,7 @@ var app = {
                 namPrinter= results[0].name;
                 
                 // here's the real action of the manageConnection function:
-                bluetoothSerial.isConnected(connect(), disconnect());
+                bluetoothSerial.isConnected(disconnect(), connect());
             },
             function(error) {
                alert(error); //app.display(JSON.stringify(error));
