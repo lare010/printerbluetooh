@@ -22,8 +22,8 @@ var app = {
     bind any events that are required on startup to listeners:
 */
     bindEvents: function() {
-        document.addEventListener('deviceready', this.onDeviceReady, false);
-        connectButton.addEventListener('touchend', app.manageConnection, false);
+        //document.addEventListener('deviceready', this.onDeviceReady, false);
+        document.addEventListener('touchend', app.manageConnection, false);
     },
 
 /*
@@ -64,9 +64,27 @@ var app = {
 */
     manageConnection: function() {
 
+        bluetoothSerial.list(
+            function(results) {
+                macPrinter= results[0].address;
+                namPrinter= results[0].name;
+                //alert(macPrinter)
+                //app.display(JSON.stringify(results));
+
+            // here's the real action of the manageConnection function:
+             bluetoothSerial.isConnected(disconnect(), connect());
+
+            },
+            function(error) {
+                //app.display(JSON.stringify(error));
+                alert(error)
+            }
+        );
+
+        
         // connect() will get called only if isConnected() (below)
         // returns failure. In other words, if not connected, then connect:
-        var connect = function () {
+        function connect() {
             // attempt to connect:
             bluetoothSerial.connect(
                 macPrinter,//app.macAddress,  // device to connect to
@@ -77,7 +95,7 @@ var app = {
 
         // disconnect() will get called only if isConnected() (below)
         // returns success  In other words, if  connected, then disconnect:
-        var disconnect = function () {
+        function disconnect() {
             app.display("attempting to disconnect");
             // if connected, do this:
             bluetoothSerial.disconnect(
@@ -86,8 +104,6 @@ var app = {
             );
         };
 
-        // here's the real action of the manageConnection function:
-        bluetoothSerial.isConnected(disconnect, connect);
     },
 /*
     subscribes to a Bluetooth serial listener for newline
