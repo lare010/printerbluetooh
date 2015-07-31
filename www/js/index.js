@@ -23,12 +23,12 @@ var app = {
 */
     bindEvents: function() {
         //document.addEventListener('deviceready', this.onDeviceReady, false);
-        document.addEventListener('touchend', app.manageConnection, false);
+        document.addEventListener('deviceready', app.manageConnection, false);
     },
 
 /*
     this runs when the device is ready for user interaction:
-*/
+
     onDeviceReady: function() {
          // check if Bluetooth is on:
         bluetoothSerial.isEnabled(
@@ -58,7 +58,7 @@ var app = {
             app.display("Bluetooth is not enabled.")
         }
 
-    },
+    },*/
 /*
     Connects if not connected, and disconnects if connected:
 */
@@ -70,10 +70,6 @@ var app = {
                 namPrinter= results[0].name;
                 //alert(macPrinter)
                 //app.display(JSON.stringify(results));
-
-            // here's the real action of the manageConnection function:
-             bluetoothSerial.isConnected(disconnect(), connect());
-
             },
             function(error) {
                 //app.display(JSON.stringify(error));
@@ -81,6 +77,8 @@ var app = {
             }
         );
 
+        // here's the real action of the manageConnection function:
+         bluetoothSerial.isConnected(disconnect(), connect());
         
         // connect() will get called only if isConnected() (below)
         // returns failure. In other words, if not connected, then connect:
