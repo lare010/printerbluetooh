@@ -133,7 +133,7 @@ var app = {
         // clear the screen and display an attempt to connect
         app.clear();
         app.display("El intento de conectarse. " +
-            "Asegúrese de que el puerto serie está abierto en el dispositivo de destino.");
+            "Asegurese de que el puerto serie esta abierto en el dispositivo de destino.");
         app.display(error);
     },
 
