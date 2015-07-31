@@ -24,7 +24,7 @@ var app = {
     bindEvents: function() {
         //document.addEventListener('deviceready', this.onDeviceReady, false);
         document.addEventListener('deviceready', app.manageConnection, false);
-        connectButton.addEventListener('touchend', disconnect(), false);
+        //connectButton.addEventListener('touchend', disconnect(), false);
     },
 
 /*
@@ -77,7 +77,14 @@ var app = {
                         //console.log("Bluetooth is connected");
                         alert('Bluetooth esta conectedo');
                     },
-                    function() { connect(); }
+                    function() {
+                        // attempt to connect:
+                        bluetoothSerial.connect(
+                            macPrinter,//app.macAddress,  // device to connect to
+                            app.openPort,    // start listening if you succeed
+                            app.showError    // show the error if you fail
+                        );
+                    }
                 );
             },
             function(error) {
@@ -85,18 +92,7 @@ var app = {
             }
         );
 
-        
-        // connect() will get called only if isConnected() (below)
-        // returns failure. In other words, if not connected, then connect:
-        function connect() {
-            // attempt to connect:
-            bluetoothSerial.connect(
-                macPrinter,//app.macAddress,  // device to connect to
-                app.openPort,    // start listening if you succeed
-                app.showError    // show the error if you fail
-            );
-        };
-
+    
         // disconnect() will get called only if isConnected() (below)
         // returns success  In other words, if  connected, then disconnect:
         function disconnect() {
@@ -181,3 +177,13 @@ var app = {
     }
 };      // end of app
 
+$('#connectButton').on(click,function(){
+    bluetoothSerial.isConnected(
+    function() {
+       alert("Bluetooth is connected");
+    },
+    function() {
+        alert("Bluetooth is *not* connected");
+    }
+);
+})
