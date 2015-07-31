@@ -69,8 +69,11 @@ var app = {
             function(results) {
                 macPrinter= results[0].address;
                 namPrinter= results[0].name;
-                //alert(macPrinter)
+                alert(macPrinter)
                 //app.display(JSON.stringify(results));
+                
+                // here's the real action of the manageConnection function:
+                bluetoothSerial.isConnected(disconnect(), connect());
             },
             function(error) {
                 //app.display(JSON.stringify(error));
@@ -78,8 +81,6 @@ var app = {
             }
         );
 
-        // here's the real action of the manageConnection function:
-         bluetoothSerial.isConnected(disconnect(), connect());
         
         // connect() will get called only if isConnected() (below)
         // returns failure. In other words, if not connected, then connect:
