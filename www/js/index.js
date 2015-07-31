@@ -69,8 +69,8 @@ var app = {
             // if not connected, do this:
             // clear the screen and display an attempt to connect
             app.clear();
-            app.display("Attempting to connect. " +
-                "Make sure the serial port is open on the target device.");
+            app.display("El intento de conectarse. "+
+                 "Asegúrese de que el puerto serie está abierto en el dispositivo de destino.");
             // attempt to connect:
             bluetoothSerial.connect(
                 macPrinter,//app.macAddress,  // device to connect to
@@ -99,6 +99,7 @@ var app = {
 */
     openPort: function() {
         // if you get a good Bluetooth serial connection:
+        app.clear();
         app.display("Conectado al printer: " +namPrinter+" mac: "+ macPrinter);
         // change the button's name:
         connectButton.innerHTML = "Disconnect";
