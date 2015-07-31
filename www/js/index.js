@@ -112,8 +112,8 @@ var app = {
         app.display("Conectado al printer: " +namPrinter+" mac: "+ macPrinter);
 
         // string
-        bluetoothSerial.write("hello, world", success, failure);
-        
+        bluetoothSerial.write("hello, world", function(){alert('print')} , function(){'not print'});
+
         // change the button's name:
         connectButton.innerHTML = "Disconnect";
         // set up a listener to listen for newlines
