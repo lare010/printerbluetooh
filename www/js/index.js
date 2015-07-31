@@ -17,7 +17,7 @@ var app = {
         this.bindEvents();
         console.log("Starting SimpleSerial app");
     },
-/*
+/* 
     bind any events that are required on startup to listeners:
 */
     bindEvents: function() {
@@ -29,12 +29,6 @@ var app = {
     this runs when the device is ready for user interaction:
 */
     onDeviceReady: function() {
-         // check if Bluetooth is on:
-        bluetoothSerial.isEnabled(
-            listPorts,
-            notEnabled
-        );
-
 
         var listPorts = function() {
             // list the available BT ports:
@@ -54,6 +48,12 @@ var app = {
         var notEnabled = function() {
             app.display("Bluetooth is not enabled.")
         }
+        
+        // check if Bluetooth is on:
+        bluetoothSerial.isEnabled(
+            listPorts,
+            notEnabled
+        );
 
     },
 /*
