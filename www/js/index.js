@@ -64,7 +64,18 @@ var app = {
     Connects if not connected, and disconnects if connected:
 */
     mConnection: function() {
-        alert(31)
+        bluetoothSerial.isConnected(
+            function() {
+                app.display("attempting to disconnect");
+                bluetoothSerial.disconnect(
+                    app.closePort,     // stop listening to the port
+                    app.showError      // show the error if you fail
+                );
+            },
+            function() {
+                console.log("Bluetooth is *not* connected");
+            }
+        );    
     },
 
     manageConnection: function() {
@@ -100,12 +111,6 @@ var app = {
         // disconnect() will get called only if isConnected() (below)
         // returns success  In other words, if  connected, then disconnect:
         function disconnect() {
-            app.display("attempting to disconnect");
-            // if connected, do this:
-            bluetoothSerial.disconnect(
-                app.closePort,     // stop listening to the port
-                app.showError      // show the error if you fail
-            );
         };
 
     },
