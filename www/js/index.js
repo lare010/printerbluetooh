@@ -69,15 +69,12 @@ var app = {
             function(results) {
                 macPrinter= results[0].address;
                 namPrinter= results[0].name;
-                alert(macPrinter)
-                //app.display(JSON.stringify(results));
                 
                 // here's the real action of the manageConnection function:
-                bluetoothSerial.isConnected(disconnect(), connect());
+                bluetoothSerial.isConnected(connect(), disconnect());
             },
             function(error) {
-                //app.display(JSON.stringify(error));
-                alert(error)
+               alert(error); //app.display(JSON.stringify(error));
             }
         );
 
