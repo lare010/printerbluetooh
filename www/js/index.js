@@ -41,7 +41,7 @@ var app = {
             bluetoothSerial.list(
                 function(results) {
                     //macAddress1 = results[0].address;
-                    alert(results[0].address)
+                   // alert(results[0].address)
                     app.display(JSON.stringify(results));
                 },
                 function(error) {
