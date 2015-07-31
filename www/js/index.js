@@ -4,7 +4,7 @@
     Modified 9 May 2013
     by Tom Igoe
 */
-var macAddress1="00:01:90:C1:A9:32";
+var macAddress1='';
 
 var app = {
     macAddress: "00:01:90:C1:A9:32",  // get your mac address from bluetoothSerial.list
@@ -40,8 +40,8 @@ var app = {
             // list the available BT ports:
             bluetoothSerial.list(
                 function(results) {
-                    //macAddress1 = results[0].address;
-                    alert(results[0].address)
+                    macAddress1 = results[0].address;
+                    alert(macAddress1)
                     app.display(JSON.stringify(results));
                 },
                 function(error) {
