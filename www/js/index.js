@@ -178,6 +178,7 @@ var app = {
 };      // end of app
 
 $('#cButton').on('click',function(){
+    alert(22)
     bluetoothSerial.isConnected(
     function() {
        alert("Bluetooth is connected");
