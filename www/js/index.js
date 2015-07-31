@@ -66,11 +66,6 @@ var app = {
         // connect() will get called only if isConnected() (below)
         // returns failure. In other words, if not connected, then connect:
         var connect = function () {
-            // if not connected, do this:
-            // clear the screen and display an attempt to connect
-            app.clear();
-            app.display("El intento de conectarse. " +
-                "Asegúrese de que el puerto serie está abierto en el dispositivo de destino.");
             // attempt to connect:
             bluetoothSerial.connect(
                 macPrinter,//app.macAddress,  // device to connect to
@@ -133,6 +128,11 @@ var app = {
     appends @error to the message div:
 */
     showError: function(error) {
+        // if not connected, do this:
+        // clear the screen and display an attempt to connect
+        app.clear();
+        app.display("El intento de conectarse. " +
+            "Asegúrese de que el puerto serie está abierto en el dispositivo de destino.");
         app.display(error);
     },
 
