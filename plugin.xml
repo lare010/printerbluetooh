@@ -5,10 +5,8 @@
     id="com.megster.cordova.bluetoothserial"
     version="0.4.3">
 
-    <name>Bluetooth Serial3</name>
-	<description>
-		Allows access to Datecs printer SDK functions.
-	</description>
+    <name>Bluetooth Serial2</name>
+    <description>Bluetooth Serial Communication Plugin</description>
     <license>Apache 2.0</license>
     <keywords>bluetooth, BLE, arduino</keywords>
     <repo>https://github.com/don/BluetoothSerial.git</repo>
