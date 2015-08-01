@@ -48,28 +48,4 @@
     </platform>
 
 
-
-	<!--platform name="android">
-
-		<config-file target="res/xml/config.xml" parent="/*">
-			<feature name="MyDatecsSDK">
-				<param name="android-package" value="com.megster.cordova.MyDatecsSDK" />
-			</feature>
-		</config-file>
-
-		<config-file target="AndroidManifest.xml" parent="/manifest">
-			<uses-permission android:name="android.permission.BLUETOOTH" />
-			<uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
-			<uses-permission android:name="android.permission.READ_PHONE_STATE" />
-		</config-file>
-
-		<js-module name="MyDatecsSDK" src="www/MyDatecsSDK.js">
-			<clobbers target="myDatecsSDK" />
-		</js-module>
-
-		<source-file src="src/android/com.datecs.api.jar" target-dir="libs" framework="true" />
-		<source-file src="src/android/MyPrinter.java" target-dir="src/br/com/mytdt/print" />
-		<source-file src="src/android/MyDatecsSDK.java" target-dir="src/br/com/mytdt/print" />
-
-	</platform-->
 </plugin>
