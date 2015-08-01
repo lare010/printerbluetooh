@@ -34,7 +34,7 @@ var app = {
     Connects if not connected, and disconnects if connected:
 */
     Bimprimir: function(){
-        alert('entre')
+
         var data = "texto \r\n"; 
         
         bluetoothSerial.write(data, 

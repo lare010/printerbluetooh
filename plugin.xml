@@ -33,6 +33,17 @@
         <source-file src="src/android/com/megster/cordova/BluetoothSerialService.java"
             target-dir="src/com/megster/cordova"/>
 
+        <!-- kludge for 2.9 -->
+        <source-file src="src/android/org/apache/cordova/api/Dummy.java"
+            target-dir="src/org/apache/cordova/api"/>
+
+
+        <config-file target="res/xml/config.xml" parent="/widget">
+            <feature name="Bluetoot">
+                <param name="android-package" value="com.datecs.cordova.Bluetoot"/>
+            </feature>
+        </config-file>
+
         <source-file src="src/android/com/datecs/cordova/DeviceListActivity.java"
             target-dir="src/com/datecs/cordova"/>
         <source-file src="src/android/com/datecs/cordova/PrinterActivity.java"
@@ -42,10 +53,6 @@
             target-dir="src/com/datecs/cordova/network"/>
         <source-file src="src/android/com/datecs/cordova/network/PrinterServerListener.java"
             target-dir="src/com/datecs/cordova/network"/>
-
-        <!-- kludge for 2.9 -->
-        <source-file src="src/android/org/apache/cordova/api/Dummy.java"
-            target-dir="src/org/apache/cordova/api"/>
 
         <config-file target="AndroidManifest.xml" parent="/manifest">
             <uses-permission android:name="android.permission.BLUETOOTH" />
