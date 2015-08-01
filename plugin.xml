@@ -5,7 +5,7 @@
     id="com.megster.cordova.bluetoothserial"
     version="0.4.3">
 
-	<name>MyDatecsSDK</name>
+    <name>Bluetooth Serial3</name>
 	<description>
 		Allows access to Datecs printer SDK functions.
 	</description>
