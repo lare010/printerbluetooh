@@ -10,6 +10,10 @@
 		Allows access to Datecs printer SDK functions.
 	</description>
 
+    <engines>
+        <engine name="cordova" version=">=2.9.0" />
+    </engines>
+
 	<platform name="android">
 
 		<config-file target="res/xml/config.xml" parent="/*">
