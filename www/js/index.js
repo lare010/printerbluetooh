@@ -11,7 +11,7 @@ var app = {
 /*  bind any events that are required on startup to listeners: */
     bindEvents: function() {
         document.addEventListener('deviceready', app.manageConnection, false);
-        //connectButton.addEventListener('touchend', app.manageConnection, false);
+        connectButton.addEventListener('touchend', app.manageConnection, false);
         //cButton.addEventListener('touchend', app.mdesconectar, false);
         //bprint.addEventListener('touchend', app.Bimprimir, false);
     },
@@ -19,7 +19,7 @@ var app = {
     manageConnection: function() {
 
     	BluetoothSerial.connect(
-            macAddress,//app.macAddress,  // device to connect to
+            app.macAddress,  // device to connect to
             app.openPort,    // start listening if you succeed
             app.showError    // show the error if you fail
         );
