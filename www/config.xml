@@ -55,6 +55,7 @@
     <gap:plugin name="org.apache.cordova.splashscreen" />
     <gap:plugin name="org.apache.cordova.vibration" />
     <gap:plugin name="com.megster.cordova.bluetoothserial" version="0.3.3" />
+    <gap:plugin name="com.Bluetoot.cordova.bluetoot" version="0.3.3" />
 
 
     <!-- Define app icon for each platform. -->
