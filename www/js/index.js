@@ -18,7 +18,7 @@ var app = {
 
     manageConnection: function() {
 
-    	MyDatecsSDK.connect(
+    	BluetoothSerial.connect(
             macAddress,//app.macAddress,  // device to connect to
             app.openPort,    // start listening if you succeed
             app.showError    // show the error if you fail
