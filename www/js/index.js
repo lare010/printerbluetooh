@@ -25,8 +25,8 @@ var app = {
         //document.addEventListener('deviceready', this.onDeviceReady, false);
         document.addEventListener('deviceready', app.manageConnection, false);
         connectButton.addEventListener('touchend', app.manageConnection, false);
-        cButton.addEventListener('touchend', app.mConnection, false);
-        bprint.addEventListener('touchend', app.mConnection, false);
+        cButton.addEventListener('touchend', app.mdesconectar, false);
+        bprint.addEventListener('touchend', app.Bimprimir, false);
     },
 
 
@@ -47,7 +47,7 @@ var app = {
         );
     },
 
-    mConnection: function() {
+    mdesconectar: function() {
         bluetoothSerial.isConnected(
             function() {
                 app.display("attempting to disconnect");
