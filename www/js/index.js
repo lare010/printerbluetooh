@@ -26,12 +26,27 @@ var app = {
         document.addEventListener('deviceready', app.manageConnection, false);
         connectButton.addEventListener('touchend', app.manageConnection, false);
         cButton.addEventListener('touchend', app.mConnection, false);
+        bprint.addEventListener('touchend', app.mConnection, false);
     },
 
 
 /*
     Connects if not connected, and disconnects if connected:
 */
+    Bimprimir: function(){
+        alert('entre')
+        var data = "texto \r\n"; 
+        
+        bluetoothSerial.write(data, 
+            function(){
+                alert('print');
+            }, 
+            function(){
+                alert('not print');
+            }
+        );
+    },
+
     mConnection: function() {
         bluetoothSerial.isConnected(
             function() {
@@ -85,8 +100,6 @@ var app = {
         app.clear();
         app.display("Conectado al printer: " +namPrinter+" mac: "+ macPrinter);
         
-        var data = "texto \r\n"; 
-        bluetoothSerial.write(data, function(){alert('print')}, function(){'not print'});
         // change the button's name:
         connectButton.innerHTML = "Disconnect";
         // set up a listener to listen for newlines
