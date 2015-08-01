@@ -9,6 +9,10 @@
 	<description>
 		Allows access to Datecs printer SDK functions.
 	</description>
+    <license>Apache 2.0</license>
+    <keywords>bluetooth, BLE, arduino</keywords>
+    <repo>https://github.com/don/BluetoothSerial.git</repo>
+    <issue>https://github.com/don/BluetoothSerial/issues</issue>
 
     <engines>
         <engine name="cordova" version=">=2.9.0" />
