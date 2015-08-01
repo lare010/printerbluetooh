@@ -18,7 +18,38 @@
         <engine name="cordova" version=">=2.9.0" />
     </engines>
 
-	<platform name="android">
+    <js-module src="www/bluetoothSerial.js" name="bluetoothSerial">
+        <clobbers target="window.bluetoothSerial" />
+    </js-module>
+
+    <platform name="android">
+
+        <config-file target="res/xml/config.xml" parent="/widget">
+            <feature name="BluetoothSerial">
+                <param name="android-package" value="com.megster.cordova.BluetoothSerial"/>
+            </feature>
+        </config-file>
+
+        <source-file src="src/android/com/megster/cordova/BluetoothSerial.java"
+            target-dir="src/com/megster/cordova"/>
+        <source-file src="src/android/com/megster/cordova/BluetoothSerialService.java"
+            target-dir="src/com/megster/cordova"/>
+
+        <!-- kludge for 2.9 -->
+        <source-file src="src/android/org/apache/cordova/api/Dummy.java"
+            target-dir="src/org/apache/cordova/api"/>
+
+
+        <config-file target="AndroidManifest.xml" parent="/manifest">
+            <uses-permission android:name="android.permission.BLUETOOTH" />
+            <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+        </config-file>
+
+    </platform>
+
+
+
+	<!--platform name="android">
 
 		<config-file target="res/xml/config.xml" parent="/*">
 			<feature name="MyDatecsSDK">
@@ -40,5 +71,5 @@
 		<source-file src="src/android/MyPrinter.java" target-dir="src/br/com/mytdt/print" />
 		<source-file src="src/android/MyDatecsSDK.java" target-dir="src/br/com/mytdt/print" />
 
-	</platform>
+	</platform-->
 </plugin>
