@@ -2,12 +2,12 @@
 <plugin
     xmlns="http://www.phonegap.com/ns/plugins/1.0"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    id="com.datecs.cordova.BluetoothSerial"
+    id="com.megster.cordova.BluetoothSerial"
     version="0.4.3">
 
     <name>Bluetooth Serial2</name>
 	<description>
-		Allows access to Datecs printer SDK functions.
+		Allows access to megster printer SDK functions.
 	</description>
     <license>Apache 2.0</license>
 
@@ -19,7 +19,7 @@
 
 		<config-file target="res/xml/config.xml" parent="/*">
 			<feature name="BluetoothSerial">
-				<param name="android-package" value="com.datecs.cordova.BluetoothSerial" />
+				<param name="android-package" value="com.megster.cordova.BluetoothSerial" />
 			</feature>
 		</config-file>
 
@@ -33,9 +33,9 @@
 			<clobbers target="BluetoothSerial" />
 		</js-module>
 
-		<source-file src="src/android/com/datecs/cordova/com.datecs.api.jar" target-dir="libs" framework="true" />
-		<source-file src="src/android/com/datecs/cordova/MyPrinter.java" target-dir="src/com/datecs/cordova" />
-		<source-file src="src/android/com/datecs/cordova/MyDatecsSDK.java" target-dir="src/com/datecs/cordova" />
+		<source-file src="src/android/com/megster/cordova/com.megster.api.jar" target-dir="libs" framework="true" />
+		<source-file src="src/android/com/megster/cordova/MyPrinter.java" target-dir="src/com/megster/cordova" />
+		<source-file src="src/android/com/megster/cordova/MymegsterSDK.java" target-dir="src/com/megster/cordova" />
 
 	</platform>
 </plugin>
