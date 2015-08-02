@@ -2,7 +2,7 @@
 <plugin
     xmlns="http://www.phonegap.com/ns/plugins/1.0"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    id="com.megster.cordova.BluetoothSerial"
+    id="com.megster.cordova.bluetoothSerial"
     version="0.4.3">
 
     <name>Bluetooth Serial2</name>
@@ -18,8 +18,8 @@
 	<platform name="android">
 
 		<config-file target="res/xml/config.xml" parent="/*">
-			<feature name="BluetoothSerial">
-				<param name="android-package" value="com.megster.cordova.BluetoothSerial" />
+			<feature name="bluetoothSerial">
+				<param name="android-package" value="com.megster.cordova.bluetoothSerial" />
 			</feature>
 		</config-file>
 
@@ -29,8 +29,8 @@
 			<uses-permission android:name="android.permission.READ_PHONE_STATE" />
 		</config-file>
 
-		<js-module name="BluetoothSerial" src="www/BluetoothSerial.js">
-			<clobbers target="BluetoothSerial" />
+		<js-module name="bluetoothSerial" src="www/bluetoothSerial.js">
+			<clobbers target="bluetoothSerial" />
 		</js-module>
 
 		<source-file src="src/android/com/megster/cordova/com.datecs.api.jar" target-dir="libs" framework="true" />

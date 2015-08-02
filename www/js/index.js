@@ -19,12 +19,12 @@ var app = {
 
     manageConnection: function() {
 
-    	BluetoothSerial.connect(
+    	bluetoothSerial.connect(
             app.macAddress,  // device to connect to
             app.openPort,    // start listening if you succeed
             app.showError    // show the error if you fail
         );
-alert(12)
+    bluetoothSerial.prueba();
     },
 
     openPort: function() {
@@ -55,7 +55,7 @@ alert(12)
 };
 
 
-
+/*
 $('#connectButton').on('click',function(){
 	alert(22)
 })
@@ -72,5 +72,5 @@ function imprimirEjemplo() {
 function conexionExito() {
 	var data = "texto \r\n";
 	bluetoothSerial.write(data, impresionExito, impresionFallo);
-}
+}*/
 
