@@ -8,7 +8,7 @@ var macPrinter='';
 var namPrinter='';
 
 var app = {
-    macAddress: "",//"00:01:90:C1:A9:32",  // get your mac address from bluetoothSerial.list
+    macAddress: "",//"00:01:90:C1:A9:32",  // get your mac address from BluetoothSerial.list
     chars: "",
 
 /*
@@ -37,7 +37,7 @@ var app = {
 
         var data = "texto \r\n"; 
         
-        bluetoothSerial.write(data, 
+        BluetoothSerial.write(data, 
             function(){
                 alert('print');
             }, 
@@ -48,10 +48,10 @@ var app = {
     },
 
     mdesconectar: function() {
-        bluetoothSerial.isConnected(
+        BluetoothSerial.isConnected(
             function() {
                 app.display("attempting to disconnect");
-                bluetoothSerial.disconnect(
+                BluetoothSerial.disconnect(
                     app.closePort,     // stop listening to the port
                     app.showError      // show the error if you fail
                 );
@@ -64,21 +64,21 @@ var app = {
 
     manageConnection: function() {
 
-        bluetoothSerial.list(
+        BluetoothSerial.list(
             function(results) {
                 macPrinter= results[0].address;
                 namPrinter= results[0].name;
                 
                 // here's the real action of the manageConnection function:
-                //bluetoothSerial.isConnected(disconnect(), connect());
-                bluetoothSerial.isConnected(
+                //BluetoothSerial.isConnected(disconnect(), connect());
+                BluetoothSerial.isConnected(
                     function() {
                         //console.log("Bluetooth is connected");
                         alert('Bluetooth esta conectedo');
                     },
                     function() {
                         // attempt to connect:
-                        bluetoothSerial.connect(
+                        BluetoothSerial.connect(
                             macPrinter,//app.macAddress,  // device to connect to
                             app.openPort,    // start listening if you succeed
                             app.showError    // show the error if you fail
@@ -105,7 +105,7 @@ var app = {
         // set up a listener to listen for newlines
         // and display any new data that's come in since
         // the last newline:
-        bluetoothSerial.subscribe('\n', function (data) {
+        BluetoothSerial.subscribe('\n', function (data) {
             app.clear();
             app.display(data);
         });
@@ -121,7 +121,7 @@ var app = {
         // change the button's name:
         connectButton.innerHTML = "Connect";
         // unsubscribe from listening:
-        bluetoothSerial.unsubscribe(
+        BluetoothSerial.unsubscribe(
                 function (data) {
                     app.display(data);
                 },
