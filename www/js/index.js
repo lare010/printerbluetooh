@@ -12,7 +12,7 @@ var app = {
     bindEvents: function() {
         document.addEventListener('deviceready', app.manageConnection, false);
         connectButton.addEventListener('touchend', app.manageConnection, false);
-        //cButton.addEventListener('touchend', app.mdesconectar, false);
+        cButton.addEventListener('touchend', app.mdesconectar, false);
         bprint.addEventListener('touchend', app.Bimprimir, false);
     },
 
@@ -28,9 +28,7 @@ var app = {
     Bimprimir: function(){
 
        alert(123)
-       // var data = "texto \r\n"; 
-        bluetoothSerial.prueba();
-        
+       // var data = "texto \r\n";         
         bluetoothSerial.printText('data', charset="utf-8",
             function(){
                 alert('print');
@@ -51,10 +49,10 @@ var app = {
         // set up a listener to listen for newlines
         // and display any new data that's come in since
         // the last newline:
-        /*bluetoothSerial.subscribe('\n', function (data) {
+        bluetoothSerial.subscribe('\n', function (data) {
             app.clear();
             app.display(data);
-        });*/
+        });
     },
 
     showError: function(error) {

@@ -1,81 +1,140 @@
-var exec = require('cordova/exec');
+/*global cordova*/
+module.exports = {
 
-var bluetoothSerial = {
-    platforms: ['android'],
+    connect: function (macAddress, success, failure) {
+        cordova.exec(success, failure, "BluetoothSerial", "connect", [macAddress]);
+    },
 
-    isSupported: function() {
-        if (window.device) {
-            var platform = window.device.platform;
-            if ((platform !== undefined) && (platform !== null)) {
-                return (this.platforms.indexOf(platform.toLowerCase()) >= 0);
-            }
+    // Android only - see http://goo.gl/1mFjZY
+    connectInsecure: function (macAddress, success, failure) {
+        cordova.exec(success, failure, "BluetoothSerial", "connectInsecure", [macAddress]);
+    },
+
+    disconnect: function (success, failure) {
+        cordova.exec(success, failure, "BluetoothSerial", "disconnect", []);
+    },
+
+    // list bound devices
+    list: function (success, failure) {
+        cordova.exec(success, failure, "BluetoothSerial", "list", []);
+    },
+
+    isEnabled: function (success, failure) {
+        cordova.exec(success, failure, "BluetoothSerial", "isEnabled", []);
+    },
+
+    isConnected: function (success, failure) {
+        cordova.exec(success, failure, "BluetoothSerial", "isConnected", []);
+    },
+
+    // the number of bytes of data available to read is passed to the success function
+    available: function (success, failure) {
+        cordova.exec(success, failure, "BluetoothSerial", "available", []);
+    },
+
+    // read all the data in the buffer
+    read: function (success, failure) {
+        cordova.exec(success, failure, "BluetoothSerial", "read", []);
+    },
+
+    // reads the data in the buffer up to and including the delimiter
+    readUntil: function (delimiter, success, failure) {
+        cordova.exec(success, failure, "BluetoothSerial", "readUntil", [delimiter]);
+    },
+
+
+    printText: function(text, charset, success, failure) {
+        cordova.exec(success, failure, 'bluetoothSerial', 'printText', [text, charset]);
+    },
+
+
+    // writes data to the bluetooth serial port
+    // data can be an ArrayBuffer, string, integer array, or Uint8Array
+    write: function (data, success, failure) {
+
+        // convert to ArrayBuffer
+        if (typeof data === 'string') {
+            data = stringToArrayBuffer(data);
+        } else if (data instanceof Array) {
+            // assuming array of interger
+            data = new Uint8Array(data).buffer;
+        } else if (data instanceof Uint8Array) {
+            data = data.buffer;
         }
-        return false;
+
+        cordova.exec(success, failure, "BluetoothSerial", "write", [data]);
     },
 
-    connect: function(address, onSuccess, onError) {
-        exec(onSuccess, onError, 'bluetoothSerial', 'connect', [address]);
+    // calls the success callback when new data is available
+    subscribe: function (delimiter, success, failure) {
+        cordova.exec(success, failure, "BluetoothSerial", "subscribe", [delimiter]);
     },
 
-    disconnect: function(onSuccess, onError) {
-        exec(onSuccess, onError, 'bluetoothSerial', 'disconnect', []);
+    // removes data subscription
+    unsubscribe: function (success, failure) {
+        cordova.exec(success, failure, "BluetoothSerial", "unsubscribe", []);
     },
 
-    init: function(onSuccess, onError) {
-        exec(onSuccess, onError, 'bluetoothSerial', 'init', []);
+    // calls the success callback when new data is available with an ArrayBuffer
+    subscribeRawData: function (success, failure) {
+
+        successWrapper = function(data) {
+            // Windows Phone flattens an array of one into a number which
+            // breaks the API. Stuff it back into an ArrayBuffer.
+            if (typeof data === 'number') {
+                var a = new Uint8Array(1);
+                a[0] = data;
+                data = a.buffer;
+            }
+            success(data);
+        }
+        cordova.exec(successWrapper, failure, "BluetoothSerial", "subscribeRaw", []);
     },
 
-    finish: function(onSuccess, onError) {
-        exec(onSuccess, onError, 'bluetoothSerial', 'finish', []);
+    // removes data subscription
+    unsubscribeRawData: function (success, failure) {
+        cordova.exec(success, failure, "BluetoothSerial", "unsubscribeRaw", []);
     },
 
-    reset: function(onSuccess, onError) {
-        exec(onSuccess, onError, 'bluetoothSerial', 'reset', []);
+    // clears the data buffer
+    clear: function (success, failure) {
+        cordova.exec(success, failure, "BluetoothSerial", "clear", []);
     },
 
-    printText: function(text, charset, onSuccess, onError) {
-        exec(onSuccess, onError, 'bluetoothSerial', 'printText', [text, charset]);
+    // reads the RSSI of the *connected* peripherial
+    readRSSI: function (success, failure) {
+        cordova.exec(success, failure, "BluetoothSerial", "readRSSI", []);
     },
 
-    printTaggedText: function(text, charset, onSuccess, onError) {
-        exec(onSuccess, onError, 'bluetoothSerial', 'printTaggedText', [text, charset]);
+    showBluetoothSettings: function (success, failure) {
+        cordova.exec(success, failure, "BluetoothSerial", "showBluetoothSettings", []);
     },
 
-    feedPaper: function(lines, onSuccess, onError) {
-        exec(onSuccess, onError, 'bluetoothSerial', 'feedPaper', [lines]);
+    enable: function (success, failure) {
+        cordova.exec(success, failure, "BluetoothSerial", "enable", []);
     },
 
-    flush: function(onSuccess, onError) {
-        exec(onSuccess, onError, 'bluetoothSerial', 'flush', []);
+    discoverUnpaired: function (success, failure) {
+        cordova.exec(success, failure, "BluetoothSerial", "discoverUnpaired", []);        
     },
 
-    selectPageMode: function(onSuccess, onError) {
-        exec(onSuccess, onError, 'bluetoothSerial', 'selectPageMode', []);
+    setDeviceDiscoveredListener: function (notify) {
+        if (typeof notify != 'function')
+            throw 'BluetoothSerial.setDeviceDiscoveredListener: Callback not a function'
+
+        cordova.exec(notify, null, "BluetoothSerial", "setDeviceDiscoveredListener", []);
     },
 
-    selectStandardMode: function(onSuccess, onError) {
-        exec(onSuccess, onError, 'bluetoothSerial', 'selectStandardMode', []);
-    },
-
-    printPage: function(onSuccess, onError) {
-        exec(onSuccess, onError, 'bluetoothSerial', 'printPage', []);
-    },
-
-    setAlign: function(align, onSuccess, onError) {
-        exec(onSuccess, onError, 'bluetoothSerial', 'setAlign', [align]);
-    },
-
-    printSelfTest: function(onSuccess, onError) {
-        exec(onSuccess, onError, 'bluetoothSerial', 'printSelfTest', []);
-    },
-    
-    printBarcode: function(qrcode, onSuccess, onError) {
-        exec(onSuccess, onError, 'bluetoothSerial', 'printBarcode', [qrcode]);
-    },
-    
-    printImage: function(imagem, onSuccess, onError) {
-        exec(onSuccess, onError, 'bluetoothSerial', 'printImage', [imagem]);
+    clearDeviceDiscoveredListener: function () {
+        cordova.exec(null, null, "BluetoothSerial", "clearDeviceDiscoveredListener", []);
     }
+
 };
 
-module.exports = bluetoothSerial;
+var stringToArrayBuffer = function(str) {
+    var ret = new Uint8Array(str.length);
+    for (var i = 0; i < str.length; i++) {
+        ret[i] = str.charCodeAt(i);
+    }
+    return ret.buffer;
+};
