@@ -12,9 +12,8 @@ var app = {
     bindEvents: function() {
         document.addEventListener('deviceready', app.manageConnection, false);
         connectButton.addEventListener('touchend', app.manageConnection, false);
-        alert(11)
         //cButton.addEventListener('touchend', app.mdesconectar, false);
-        //bprint.addEventListener('touchend', app.Bimprimir, false);
+        bprint.addEventListener('touchend', app.Bimprimir, false);
     },
 
     manageConnection: function() {
@@ -24,7 +23,20 @@ var app = {
             app.openPort,    // start listening if you succeed
             app.showError    // show the error if you fail
         );
-    bluetoothSerial.prueba();
+    },
+
+    Bimprimir: function(){
+
+        var data = "texto \r\n"; 
+        
+        bluetoothSerial.printText(data, 'UTF-8',
+            function(){
+                alert('print');
+            }, 
+            function(){
+                alert('not print');
+            }
+        );
     },
 
     openPort: function() {

@@ -35,7 +35,7 @@
 
 		<source-file src="src/android/com/megster/cordova/com.datecs.api.jar" target-dir="libs" framework="true" />
 		<source-file src="src/android/com/megster/cordova/MyPrinter.java" target-dir="src/com/megster/cordova" />
-		<source-file src="src/android/com/megster/cordova/MymegsterSDK.java" target-dir="src/com/megster/cordova" />
+		<source-file src="src/android/com/megster/cordova/MyDatecsSDK.java" target-dir="src/com/megster/cordova" />
 
 	</platform>
 </plugin>

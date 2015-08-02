@@ -17,10 +17,6 @@ var bluetoothSerial = {
         exec(onSuccess, onError, 'bluetoothSerial', 'connect', [address]);
     },
 
-    prueba:function(){
-        alert('prueba')
-    },
-
     disconnect: function(onSuccess, onError) {
         exec(onSuccess, onError, 'bluetoothSerial', 'disconnect', []);
     },
