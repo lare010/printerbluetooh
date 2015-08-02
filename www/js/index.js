@@ -12,6 +12,7 @@ var app = {
     bindEvents: function() {
         document.addEventListener('deviceready', app.manageConnection, false);
         connectButton.addEventListener('touchend', app.manageConnection, false);
+        alert(11)
         //cButton.addEventListener('touchend', app.mdesconectar, false);
         //bprint.addEventListener('touchend', app.Bimprimir, false);
     },
@@ -23,7 +24,7 @@ var app = {
             app.openPort,    // start listening if you succeed
             app.showError    // show the error if you fail
         );
-
+alert(12)
     },
 
     openPort: function() {
