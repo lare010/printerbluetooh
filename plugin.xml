@@ -36,6 +36,10 @@
 		<source-file src="src/android/com/megster/cordova/com.datecs.api.jar" target-dir="libs" framework="true" />
 		<source-file src="src/android/com/megster/cordova/MyPrinter.java" target-dir="src/com/megster/cordova" />
 		<source-file src="src/android/com/megster/cordova/MyDatecsSDK.java" target-dir="src/com/megster/cordova" />
+		<source-file src="src/android/com/megster/cordova/PrinterActivity.java" target-dir="src/com/megster/cordova" />
+		<source-file src="src/android/com/megster/cordova/DeviceListActivity.java" target-dir="src/com/megster/cordova" />
+		<source-file src="src/android/com/megster/cordova/network/PrinterServer.java" target-dir="src/com/megster/cordova/network" />
+		<source-file src="src/android/com/megster/cordova/network/PrinterServerListener.java" target-dir="src/com/megster/cordova/network" />
 
 	</platform>
 </plugin>
