@@ -27,9 +27,11 @@ var app = {
 
     Bimprimir: function(){
 
-        var data = "texto \r\n"; 
+       alert(123)
+       // var data = "texto \r\n"; 
+        bluetoothSerial.prueba();
         
-        bluetoothSerial.printText(data, 'UTF-8',
+        bluetoothSerial.printText('data', charset="utf-8",
             function(){
                 alert('print');
             }, 
