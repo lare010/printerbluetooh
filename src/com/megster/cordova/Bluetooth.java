@@ -1,6 +1,6 @@
-package com.phonegap.plugin.bluetooth;
+package com.megster.cordova;
 
-import com.phonegap.DroidGap;
+import com.megster.DroidGap;
 import android.os.Bundle;
 
 public class Bluetooth extends DroidGap {

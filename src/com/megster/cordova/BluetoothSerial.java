@@ -15,7 +15,7 @@
  * the License.
  */
 
-package com.phonegap.plugin.bluetooth;
+package com.megster.cordova;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -24,9 +24,9 @@ import org.json.JSONArray;
 import android.net.ConnectivityManager;
 import android.os.Looper;
 import android.util.Log;
-import com.phonegap.api.Plugin;
-import com.phonegap.api.PluginResult;
-import com.phonegap.api.PluginResult.Status;
+import com.megster.api.Plugin;
+import com.megster.api.PluginResult;
+import com.megster.api.PluginResult.Status;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.content.BroadcastReceiver;
@@ -36,7 +36,7 @@ import android.content.IntentFilter;
 
 
 
-public class BluetoothPlugin extends Plugin {
+public class BluetoothSerial extends Plugin {
 
 	public static final String ACTION_DISCOVER_DEVICES="listDevices";
 	public static final String ACTION_LIST_BOUND_DEVICES="listBoundDevices";
@@ -57,7 +57,7 @@ public class BluetoothPlugin extends Plugin {
 	 */
 	@Override
 	public PluginResult execute(String action, JSONArray arg1, String callbackId) {
-		Log.d("BluetoothPlugin", "Plugin Called");
+		Log.d("BluetoothSerial", "Plugin Called");
 		PluginResult result = null;
 		context = this.ctx;
 		
@@ -91,7 +91,7 @@ public class BluetoothPlugin extends Plugin {
 		if (ACTION_DISCOVER_DEVICES.equals(action)) {
 			try {
 				
-				Log.d("BluetoothPlugin", "We're in "+ACTION_DISCOVER_DEVICES);
+				Log.d("BluetoothSerial", "We're in "+ACTION_DISCOVER_DEVICES);
 				
 				found_devices.clear();
 				discovering=true;
@@ -100,7 +100,7 @@ public class BluetoothPlugin extends Plugin {
 		        	btadapter.cancelDiscovery();
 		        }
 		        
-		        Log.i("BluetoothPlugin","Discovering devices...");        
+		        Log.i("BluetoothSerial","Discovering devices...");        
 				btadapter.startDiscovery();		
 				
 				while (discovering){}
@@ -109,22 +109,22 @@ public class BluetoothPlugin extends Plugin {
 				int count=0;
 				devicesFound="[";
 				for (BluetoothDevice device : found_devices) {
-					Log.i("BluetoothPlugin",device.getName() + " "+device.getAddress()+" "+device.getBondState());
+					Log.i("BluetoothSerial",device.getName() + " "+device.getAddress()+" "+device.getBondState());
 				   if ((device.getName()!=null) && (device.getBluetoothClass()!=null)){
 					   devicesFound = devicesFound + " { \"name\" : \"" + device.getName() + "\" ," +
 					   		"\"address\" : \"" + device.getAddress() + "\" ," +
 							"\"class\" : \"" + device.getBluetoothClass().getDeviceClass() + "\" }";
 					   if (count<found_devices.size()-1) devicesFound = devicesFound + ",";
-				   }else Log.i("BluetoothPlugin",device.getName() + " Problems retrieving attributes. Device not added ");
+				   }else Log.i("BluetoothSerial",device.getName() + " Problems retrieving attributes. Device not added ");
 				   count++;
 				}	
 				
 				devicesFound= devicesFound + "] ";				
 				
-				Log.d("BluetoothPlugin - "+ACTION_DISCOVER_DEVICES, "Returning: "+ devicesFound);
+				Log.d("BluetoothSerial - "+ACTION_DISCOVER_DEVICES, "Returning: "+ devicesFound);
 				result = new PluginResult(Status.OK, devicesFound);
 			} catch (Exception Ex) {
-				Log.d("BluetoothPlugin - "+ACTION_DISCOVER_DEVICES, "Got Exception "+ Ex.getMessage());
+				Log.d("BluetoothSerial - "+ACTION_DISCOVER_DEVICES, "Got Exception "+ Ex.getMessage());
 				result = new PluginResult(Status.ERROR);
 			}
 			
@@ -134,14 +134,14 @@ public class BluetoothPlugin extends Plugin {
 			
 		} else 	if (ACTION_IS_BT_ENABLED.equals(action)) {
 			try {							
-				Log.d("BluetoothPlugin", "We're in "+ACTION_IS_BT_ENABLED);
+				Log.d("BluetoothSerial", "We're in "+ACTION_IS_BT_ENABLED);
 				
 				boolean isEnabled = btadapter.isEnabled();
 				
-				Log.d("BluetoothPlugin - "+ACTION_IS_BT_ENABLED, "Returning "+ "is Bluetooth Enabled? "+isEnabled);
+				Log.d("BluetoothSerial - "+ACTION_IS_BT_ENABLED, "Returning "+ "is Bluetooth Enabled? "+isEnabled);
 				result = new PluginResult(Status.OK, isEnabled);
 			} catch (Exception Ex) {
-				Log.d("BluetoothPlugin - "+ACTION_IS_BT_ENABLED, "Got Exception "+ Ex.getMessage());
+				Log.d("BluetoothSerial - "+ACTION_IS_BT_ENABLED, "Got Exception "+ Ex.getMessage());
 				result = new PluginResult(Status.ERROR);
 			}
 		
@@ -151,11 +151,11 @@ public class BluetoothPlugin extends Plugin {
 			
 		} else 	if (ACTION_ENABLE_BT.equals(action)) {
 			try {							
-				Log.d("BluetoothPlugin", "We're in "+ACTION_ENABLE_BT);
+				Log.d("BluetoothSerial", "We're in "+ACTION_ENABLE_BT);
 				
 				boolean enabled = false;
 				
-				Log.d("BluetoothPlugin", "Enabling Bluetooth...");
+				Log.d("BluetoothSerial", "Enabling Bluetooth...");
 				
 				if (btadapter.isEnabled())
 				{
@@ -165,10 +165,10 @@ public class BluetoothPlugin extends Plugin {
 				}
 
 				
-				Log.d("BluetoothPlugin - "+ACTION_ENABLE_BT, "Returning "+ "Result: "+enabled);
+				Log.d("BluetoothSerial - "+ACTION_ENABLE_BT, "Returning "+ "Result: "+enabled);
 				result = new PluginResult(Status.OK, enabled);
 			} catch (Exception Ex) {
-				Log.d("BluetoothPlugin - "+ACTION_ENABLE_BT, "Got Exception "+ Ex.getMessage());
+				Log.d("BluetoothSerial - "+ACTION_ENABLE_BT, "Got Exception "+ Ex.getMessage());
 				result = new PluginResult(Status.ERROR);
 			}
 			
@@ -178,11 +178,11 @@ public class BluetoothPlugin extends Plugin {
 			
 		} else 	if (ACTION_DISABLE_BT.equals(action)) {
 			try {							
-				Log.d("BluetoothPlugin", "We're in "+ACTION_DISABLE_BT);
+				Log.d("BluetoothSerial", "We're in "+ACTION_DISABLE_BT);
 				
 				boolean disabled = false;
 				
-				Log.d("BluetoothPlugin", "Disabling Bluetooth...");
+				Log.d("BluetoothSerial", "Disabling Bluetooth...");
 				
 				if (btadapter.isEnabled())
 				{
@@ -191,10 +191,10 @@ public class BluetoothPlugin extends Plugin {
 					disabled = true;
 				}				
 								
-				Log.d("BluetoothPlugin - "+ACTION_DISABLE_BT, "Returning "+ "Result: "+disabled);
+				Log.d("BluetoothSerial - "+ACTION_DISABLE_BT, "Returning "+ "Result: "+disabled);
 				result = new PluginResult(Status.OK, disabled);
 			} catch (Exception Ex) {
-				Log.d("BluetoothPlugin - "+ACTION_DISABLE_BT, "Got Exception "+ Ex.getMessage());
+				Log.d("BluetoothSerial - "+ACTION_DISABLE_BT, "Got Exception "+ Ex.getMessage());
 				result = new PluginResult(Status.ERROR);
 			}
 			
@@ -204,7 +204,7 @@ public class BluetoothPlugin extends Plugin {
 						
 		} else 	if (ACTION_PAIR_BT.equals(action)) {
 			try {							
-				Log.d("BluetoothPlugin", "We're in "+ACTION_PAIR_BT);
+				Log.d("BluetoothSerial", "We're in "+ACTION_PAIR_BT);
 				
 				String addressDevice = arg1.getString(0);
 				
@@ -215,7 +215,7 @@ public class BluetoothPlugin extends Plugin {
 				BluetoothDevice device = btadapter.getRemoteDevice(addressDevice);
 				boolean paired = false;
 							
-				Log.d("BluetoothPlugin","Pairing with Bluetooth device with name " + device.getName()+" and address "+device.getAddress());
+				Log.d("BluetoothSerial","Pairing with Bluetooth device with name " + device.getName()+" and address "+device.getAddress());
 		          	
 				try {
 					Method m = device.getClass().getMethod("createBond");
@@ -226,10 +226,10 @@ public class BluetoothPlugin extends Plugin {
 				}  
 				
 				
-				Log.d("BluetoothPlugin - "+ACTION_PAIR_BT, "Returning "+ "Result: "+paired);
+				Log.d("BluetoothSerial - "+ACTION_PAIR_BT, "Returning "+ "Result: "+paired);
 				result = new PluginResult(Status.OK, paired);
 			} catch (Exception Ex) {
-				Log.d("BluetoothPlugin - "+ACTION_PAIR_BT, "Got Exception "+ Ex.getMessage());
+				Log.d("BluetoothSerial - "+ACTION_PAIR_BT, "Got Exception "+ Ex.getMessage());
 				result = new PluginResult(Status.ERROR);
 			}
 			
@@ -239,7 +239,7 @@ public class BluetoothPlugin extends Plugin {
 						
 		} else 	if (ACTION_UNPAIR_BT.equals(action)) {
 			try {							
-				Log.d("BluetoothPlugin", "We're in "+ACTION_UNPAIR_BT);
+				Log.d("BluetoothSerial", "We're in "+ACTION_UNPAIR_BT);
 				
 				String addressDevice = arg1.getString(0);
 				
@@ -250,7 +250,7 @@ public class BluetoothPlugin extends Plugin {
 				BluetoothDevice device = btadapter.getRemoteDevice(addressDevice);
 				boolean unpaired = false;
 							
-				Log.d("BluetoothPlugin","Unpairing Bluetooth device with " + device.getName()+" and address "+device.getAddress());
+				Log.d("BluetoothSerial","Unpairing Bluetooth device with " + device.getName()+" and address "+device.getAddress());
 		          	
 				try {
 					Method m = device.getClass().getMethod("removeBond");
@@ -261,10 +261,10 @@ public class BluetoothPlugin extends Plugin {
 				}  
 				
 				
-				Log.d("BluetoothPlugin - "+ACTION_UNPAIR_BT, "Returning "+ "Result: "+unpaired);
+				Log.d("BluetoothSerial - "+ACTION_UNPAIR_BT, "Returning "+ "Result: "+unpaired);
 				result = new PluginResult(Status.OK, unpaired);
 			} catch (Exception Ex) {
-				Log.d("BluetoothPlugin - "+ACTION_UNPAIR_BT, "Got Exception "+ Ex.getMessage());
+				Log.d("BluetoothSerial - "+ACTION_UNPAIR_BT, "Got Exception "+ Ex.getMessage());
 				result = new PluginResult(Status.ERROR);
 			}
 			
@@ -274,23 +274,23 @@ public class BluetoothPlugin extends Plugin {
 						
 		} else 	if (ACTION_LIST_BOUND_DEVICES.equals(action)) {
 			try {							
-				Log.d("BluetoothPlugin", "We're in "+ACTION_LIST_BOUND_DEVICES);
+				Log.d("BluetoothSerial", "We're in "+ACTION_LIST_BOUND_DEVICES);
 				
-				Log.d("BluetoothPlugin","Getting paired devices...");
+				Log.d("BluetoothSerial","Getting paired devices...");
 				Set<BluetoothDevice> pairedDevices = btadapter.getBondedDevices();
 				int count =0;	
 				String resultBoundDevices="[ ";
 				if (pairedDevices.size() > 0) {					
 					for (BluetoothDevice device : pairedDevices) 
 					{						
-						Log.i("BluetoothPlugin",device.getName() + " "+device.getAddress()+" "+device.getBondState());
+						Log.i("BluetoothSerial",device.getName() + " "+device.getAddress()+" "+device.getBondState());
 						
 						if ((device.getName()!=null) && (device.getBluetoothClass()!=null)){
 							resultBoundDevices = resultBoundDevices + " { \"name\" : \"" + device.getName() + "\" ," +
 				   				"\"address\" : \"" + device.getAddress() + "\" ," +
 				   				"\"class\" : \"" + device.getBluetoothClass().getDeviceClass() + "\" }";
 							 if (count<pairedDevices.size()-1) resultBoundDevices = resultBoundDevices + ",";					   
-						} else Log.i("BluetoothPlugin",device.getName() + " Problems retrieving attributes. Device not added ");
+						} else Log.i("BluetoothSerial",device.getName() + " Problems retrieving attributes. Device not added ");
 						 count++;
 					 }			    
 					
@@ -298,11 +298,11 @@ public class BluetoothPlugin extends Plugin {
 				
 				resultBoundDevices= resultBoundDevices + "] ";
 				
-				Log.d("BluetoothPlugin - "+ACTION_LIST_BOUND_DEVICES, "Returning "+ resultBoundDevices);
+				Log.d("BluetoothSerial - "+ACTION_LIST_BOUND_DEVICES, "Returning "+ resultBoundDevices);
 				result = new PluginResult(Status.OK, resultBoundDevices);
 				
 			} catch (Exception Ex) {
-				Log.d("BluetoothPlugin - "+ACTION_LIST_BOUND_DEVICES, "Got Exception "+ Ex.getMessage());
+				Log.d("BluetoothSerial - "+ACTION_LIST_BOUND_DEVICES, "Got Exception "+ Ex.getMessage());
 				result = new PluginResult(Status.ERROR);
 			}	
 			
@@ -312,24 +312,24 @@ public class BluetoothPlugin extends Plugin {
 			
 		} else 	if (ACTION_STOP_DISCOVERING_BT.equals(action)) {
 			try {							
-				Log.d("BluetoothPlugin", "We're in "+ACTION_STOP_DISCOVERING_BT);
+				Log.d("BluetoothSerial", "We're in "+ACTION_STOP_DISCOVERING_BT);
 				
 				boolean stopped = true;
 				
-				Log.d("BluetoothPlugin", "Stop Discovering Bluetooth Devices...");
+				Log.d("BluetoothSerial", "Stop Discovering Bluetooth Devices...");
 				
 				if (btadapter.isDiscovering())
 				{
-					Log.i("BluetoothPlugin","Stop discovery...");	
+					Log.i("BluetoothSerial","Stop discovery...");	
 					stopped = btadapter.cancelDiscovery();
 		        	discovering=false;
 				}				
 				
 			
-				Log.d("BluetoothPlugin - "+ACTION_STOP_DISCOVERING_BT, "Returning "+ "Result: "+stopped);
+				Log.d("BluetoothSerial - "+ACTION_STOP_DISCOVERING_BT, "Returning "+ "Result: "+stopped);
 				result = new PluginResult(Status.OK, stopped);
 			} catch (Exception Ex) {
-				Log.d("BluetoothPlugin - "+ACTION_STOP_DISCOVERING_BT, "Got Exception "+ Ex.getMessage());
+				Log.d("BluetoothSerial - "+ACTION_STOP_DISCOVERING_BT, "Got Exception "+ Ex.getMessage());
 				result = new PluginResult(Status.ERROR);
 			}
 			
@@ -339,10 +339,10 @@ public class BluetoothPlugin extends Plugin {
 			
 		} else 	if (ACTION_IS_BOUND_BT.equals(action)) {
 			try {							
-				Log.d("BluetoothPlugin", "We're in "+ACTION_IS_BOUND_BT);
+				Log.d("BluetoothSerial", "We're in "+ACTION_IS_BOUND_BT);
 				String addressDevice = arg1.getString(0);
 				BluetoothDevice device = btadapter.getRemoteDevice(addressDevice);
-				Log.i("BluetoothPlugin","BT Device in state "+device.getBondState());	
+				Log.i("BluetoothSerial","BT Device in state "+device.getBondState());	
 				
 				boolean state = false;
 				
@@ -351,15 +351,15 @@ public class BluetoothPlugin extends Plugin {
 				else
 					state = false;
 				
-				Log.d("BluetoothPlugin","Is Bound with " + device.getName()+" - address "+device.getAddress());
+				Log.d("BluetoothSerial","Is Bound with " + device.getName()+" - address "+device.getAddress());
 		          				
 				
-				Log.d("BluetoothPlugin - "+ACTION_IS_BOUND_BT, "Returning "+ "Result: "+state);
+				Log.d("BluetoothSerial - "+ACTION_IS_BOUND_BT, "Returning "+ "Result: "+state);
 				result = new PluginResult(Status.OK, state);
 				
 				
 			} catch (Exception Ex) {
-				Log.d("BluetoothPlugin - "+ACTION_IS_BOUND_BT, "Got Exception "+ Ex.getMessage());
+				Log.d("BluetoothSerial - "+ACTION_IS_BOUND_BT, "Got Exception "+ Ex.getMessage());
 				result = new PluginResult(Status.ERROR);
 			}
 			
@@ -369,7 +369,7 @@ public class BluetoothPlugin extends Plugin {
 		
 		} else {
 			result = new PluginResult(Status.INVALID_ACTION);
-			Log.d("BluetoothPlugin", "Invalid action : "+action+" passed");
+			Log.d("BluetoothSerial", "Invalid action : "+action+" passed");
 		}
 		return result;
 	}
@@ -386,7 +386,7 @@ public class BluetoothPlugin extends Plugin {
 	public void addDevice(BluetoothDevice device){		
 		if (!found_devices.contains(device))
 		{
-			Log.i("BluetoothPlugin","Device stored ");
+			Log.i("BluetoothSerial","Device stored ");
 			found_devices.add(device);
 		}
 	}
@@ -396,7 +396,7 @@ public class BluetoothPlugin extends Plugin {
     @Override
 	public void onDestroy() {
 		// TODO Auto-generated method stub
-    	Log.i("BluetoothPlugin","onDestroy "+this.getClass());
+    	Log.i("BluetoothSerial","onDestroy "+this.getClass());
     	context.unregisterReceiver(mReceiver);
     	super.onDestroy();
 	}
@@ -409,30 +409,30 @@ public class BluetoothPlugin extends Plugin {
 	    {
 	    	
 	        String action = intent.getAction();
-	        Log.i("BluetoothPlugin","Action: "+action);
+	        Log.i("BluetoothSerial","Action: "+action);
 	        
 	        // When discovery finds a device	        
 	        if (BluetoothDevice.ACTION_FOUND.equals(action)) 
 	        {	        	
 	            // Get the BluetoothDevice object from the Intent
 	            BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
-	            Log.i("BluetoothPlugin","Device found "+device.getName()+ " "+device.getBondState()+" " + device.getAddress());
+	            Log.i("BluetoothSerial","Device found "+device.getName()+ " "+device.getBondState()+" " + device.getAddress());
 	       
 	            if (device.getBondState() != BluetoothDevice.BOND_BONDED) {	
-	            	Log.i("BluetoothPlugin","Device not paired");
+	            	Log.i("BluetoothSerial","Device not paired");
 	            	addDevice(device);
-	            }else Log.i("BluetoothPlugin","Device already paired");	         
+	            }else Log.i("BluetoothSerial","Device already paired");	         
 	         
 	        // When discovery starts	
 	        }else if (BluetoothAdapter.ACTION_DISCOVERY_STARTED.equals(action)) {
 	        	
-	        	Log.i("BluetoothPlugin","Discovery started");
+	        	Log.i("BluetoothSerial","Discovery started");
 	        	setDiscovering(true);
 	        	
 	        // When discovery finishes	
             }else if (BluetoothAdapter.ACTION_DISCOVERY_FINISHED.equals(action)) {
             	
-            	Log.i("BluetoothPlugin","Discovery finilized");
+            	Log.i("BluetoothSerial","Discovery finilized");
             	setDiscovering(false); 	   
 	
             }

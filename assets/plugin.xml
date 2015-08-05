@@ -2,7 +2,7 @@
 <plugin
     xmlns="http://www.phonegap.com/ns/plugins/1.0"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    id="com.phonegap.plugin.bluetooth.BluetoothPlugin"
+    id="com.megster.cordova.BluetoothSerial"
     version="0.4.3">
 
     <name>Bluetooth Serial</name>
@@ -15,22 +15,22 @@
 
 <!--plugin name="BluetoothPlugin" value="com.phonegap.plugin.bluetooth.BluetoothPlugin"/-->
 
-    <js-module src="www/bluetooth.js" name="BluetoothPlugin">
+    <js-module src="www/bluetooth.js" name="BluetoothSerial">
         <clobbers target="window.bluetooth" />
     </js-module>
 
     <platform name="android">
 
         <config-file target="res/xml/config.xml" parent="/widget">
-            <feature name="BluetoothPlugin">
-                <param name="android-package" value="com.phonegap.plugin.bluetooth.BluetoothPlugin"/>
+            <feature name="BluetoothSerial">
+                <param name="android-package" value="com.megster.cordova.BluetoothSerial"/>
             </feature>
         </config-file>
 
-        <source-file src="src/com/phonegap/plugin/bluetooth/Bluetooth.java"
-            target-dir="src/com/phonegap/plugin"/>
-        <source-file src="src/com/phonegap/plugin/bluetooth/BluetoothPlugin.java"
-            target-dir="src/com/phonegap/plugin"/>
+        <source-file src="src/com/megster/cordova/Bluetooth.java"
+            target-dir="src/com/megster/cordova"/>
+        <source-file src="src/com/megster/cordova/BluetoothSerial.java"
+            target-dir="src/com/megster/cordova"/>
 
         <config-file target="AndroidManifest.xml" parent="/manifest">
             <uses-permission android:name="android.permission.BLUETOOTH" />
