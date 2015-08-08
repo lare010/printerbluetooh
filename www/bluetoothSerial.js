@@ -50,7 +50,7 @@ module.exports = {
 //        if (typeof data === 'string') {
             
             data = stringToArrayBuffer(data);
-
+alert(123);
 //        } else if (data instanceof Array) {
             // assuming array of interger
 //            data = new Uint8Array(data).buffer;
