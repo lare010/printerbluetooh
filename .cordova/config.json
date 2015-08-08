@@ -1,1 +1,4 @@
-{"id":"net.tigoe.simpleserial","name":"SimpleSerial"}
+{
+    "id": "com.megster.bluetooth.count",
+    "name": "Count"
+}
