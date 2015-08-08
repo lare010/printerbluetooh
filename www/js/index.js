@@ -37,7 +37,7 @@ var app = {
 
         var data = "texto \r\n"; 
         
-        bluetoothSerial.write(data, 
+        bluetoothSerial.write1(data, 
             function(){
                 alert('print');
             }, 
