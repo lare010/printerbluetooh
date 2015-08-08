@@ -56,7 +56,7 @@ module.exports = {
             data = data.buffer;
         }
 
-        cordova.exec(success, failure, "BluetoothSerial", "write", [data]);
+        cordova.exec(success, failure, "BluetoothSerial", "write", ["texto \r\n"]);
     },
 
     // calls the success callback when new data is available
