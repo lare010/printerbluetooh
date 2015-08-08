@@ -49,7 +49,7 @@ module.exports = {
         // convert to ArrayBuffer
 //        if (typeof data === 'string') {
             
-            //data = stringToArrayBuffer(data);
+            data = stringToArrayBuffer(data);
 
 //        } else if (data instanceof Array) {
             // assuming array of interger
